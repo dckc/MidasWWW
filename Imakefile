@@ -1,0 +1,79 @@
+/*
+ *
+ * midaswww -- Machine independent makefile
+ *
+ * (c) Copyright 1992, Tony Johnson (Tony_Johnson@Slac.Stanford.Edu)
+ *
+ * Permission to use, copy, modify, distribute, and sell this software
+ * and its documentation for any purpose is hereby granted without fee,
+ * provided that the above copyright notice appear in all copies and
+ * that both that copyright notice and this permission notice appear in
+ * supporting documentation, and that the name of Kirk Erickson and
+ * Silicon Graphics Inc. not be used in advertising or publicity pertaining
+ * to distribution of the software without specific, written prior
+ * permission.  Tony Johnson makes no
+ * representations about the suitability of this software for any purpose.
+ * It is provided "as is" without express or implied warranty.
+ *
+ * THE ABOVE-NAMED DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
+ * INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO
+ * EVENT SHALL THE ABOVE-NAMED BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+ * CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF
+ * USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+ * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ * PERFORMANCE OF THIS SOFTWARE.
+ */
+
+/*
+ *  If the default install targets aren't appropriate, change NO to YES,
+ *  and edit the targets to what you want.
+ */
+#define NonStandardInstallTargets NO
+#if NonStandardInstallTargets
+           BINDIR = /usr/local/bin
+           MANDIR = /usr/local/man/cat1
+      XAPPLOADDIR = /usr/local/lib/app-defaults
+#endif
+
+  EXTRA_LIBRARIES = -lMrm -lXm $(DEPLIBS) $(SYSLIBS)
+
+
+/*
+ *  To compile for debugging.
+ *  Take your default OPTIM line from Makefile, and change the -O to -g.
+ */
+#define TurnOnDebugging NO
+#if TurnOnDebugging 
+      CDEBUGFLAGS = -g
+          DEFINES = -DDEBUG -DVERSION="\"$(VERSION)\""
+#else
+          DEFINES = -DVERSION="\"$(VERSION)\""
+#endif
+
+              WWW = www -n -na -p
+
+/* You shouldn't need to modify anything below this line */
+
+include CommonMakefile
+
+ComplexProgramTarget($(PGM))
+InstallAppDefaults($(CLASS))
+
+
+README:	
+	$(WWW) http://slacvx.slac.stanford.edu:80/midaswww/v10/readme.html > README
+
+README_VMS:	
+	$(WWW) http://slacvx.slac.stanford.edu:80/midaswww/v10/readme_vms.html > README_VMS
+
+tar: $(DIR).tar.Z
+
+$(DIR).tar.Z: $(HEADERS) $(SRCS) $(UILS) $(OTHERS)
+	mkdir $(DIR)
+	cp $(HEADERS) $(SRCS) $(UILS) $(OTHERS) $(DIR)
+	tar -cvf $(DIR).tar $(DIR)
+	compress $(DIR).tar
+	cd $(DIR); rm -f *
+	rmdir $(DIR)
+	rm README*
+

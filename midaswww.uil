@@ -1,0 +1,1122 @@
+module WWW
+    names = case_sensitive
+
+object
+    WWWMain: XmMainWindow 
+        {
+        arguments
+            {
+            XmNx = 45;
+            XmNy = 27;
+            XmNborderWidth = 1;
+            XmNwidth = 503;
+            XmNheight = 647;
+            XmNmenuBar = XmMenuBar WWWMenu;
+            XmNcommandWindowLocation = XmCOMMAND_BELOW_WORKSPACE;
+            XmNmessageWindow = XmForm WWWKey;
+            };
+        controls
+            {
+            XmMenuBar WWWMenu;
+            unmanaged XmFormDialog WWWDocInfo;
+            unmanaged XmFormDialog WWWDocOpen;
+            unmanaged XmFormDialog WWWSave;
+            unmanaged XmFormDialog WWWHistory;
+            unmanaged XmFormDialog WWWMail;
+            unmanaged XmFormDialog WWWParameters;
+            XmForm WWWKey;
+            XmForm 
+                {
+                arguments
+                    {
+                    XmNwidth = 25;
+                    XmNheight = 25;
+                    XmNborderWidth = 1;
+                    };
+                };
+            };
+        };
+    WWWMenu: XmMenuBar 
+        {
+        };
+    WWWCommand: XmRowColumn 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            XmNorientation = XmVERTICAL;
+            XmNadjustLast = true;
+            XmNpacking = XmPACK_COLUMN;
+            XmNnumColumns = 2;
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNtopOffset = 0;
+            XmNrightAttachment = XmATTACH_WIDGET;
+            XmNrightOffset = 9;
+            XmNrightWidget = XmDrawnButton WWWHome;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 0;
+            };
+        controls
+            {
+            XmLabelGadget 
+                {
+                arguments
+                    {
+                    XmNx = 16;
+                    XmNy = 6;
+                    XmNlabelString = 
+                    compound_string("Keyword:");
+                    };
+                };
+            XmTextField WWWCommandText;
+            };
+        };
+    WWWCommandText: XmTextField 
+        {
+        arguments
+            {
+            XmNx = 46;
+            XmNy = 22;
+            XmNwidth = 25;
+            XmNheight = 25;
+            XmNcolumns = 1;
+            };
+        };
+    WWWDocInfo: XmFormDialog 
+        {
+        arguments
+            {
+            XmNx = 62;
+            XmNy = 812;
+            XmNborderWidth = 1;
+            };
+        controls
+            {
+            XmRowColumn VUITaaaaa;
+            XmRowColumn VUITaaaab;
+            unmanaged XmScrolledWindow SourceTextSW;
+            };
+        };
+    VUITaaaaa: XmRowColumn 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftOffset = 10;
+            XmNtopOffset = 7;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 11;
+            XmNnumColumns = 2;
+            XmNpacking = XmPACK_COLUMN;
+            XmNorientation = XmVERTICAL;
+            XmNentryAlignment = XmALIGNMENT_END;
+            };
+        controls
+            {
+            XmLabelGadget 
+                {
+                arguments
+                    {
+                    XmNx = 17;
+                    XmNy = 4;
+                    XmNlabelString = 
+                    compound_string("Title:");
+                    XmNalignment = XmALIGNMENT_END;
+                    };
+                };
+            XmLabelGadget 
+                {
+                arguments
+                    {
+                    XmNx = 13;
+                    XmNy = 24;
+                    XmNlabelString = 
+                    compound_string("Document:");
+                    XmNalignment = XmALIGNMENT_END;
+                    };
+                };
+            XmTextField WWWDocInfoDocTitleText;
+            XmTextField WWWWDocInfoDocNameText;
+            };
+        };
+    VUITaaaab: XmRowColumn 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = 9;
+            XmNtopOffset = 11;
+            XmNorientation = XmHORIZONTAL;
+            XmNtopWidget = XmRowColumn VUITaaaaa;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 10;
+            };
+        controls
+            {
+            XmPushButtonGadget ShowSource;
+            XmPushButtonGadget HideSource;
+            XmPushButtonGadget WWWDocInfoHelp;
+            XmPushButtonGadget WWWDocInfoDismiss;
+            };
+        };
+    WWWWDocInfoDocNameText: XmTextField 
+        {
+        arguments
+            {
+            XmNx = 8;
+            XmNy = 84;
+            XmNwidth = 25;
+            XmNheight = 25;
+            XmNcolumns = 1;
+            XmNeditable = false;
+            };
+        };
+    WWWDocInfoDocTitleText: XmTextField 
+        {
+        arguments
+            {
+            XmNx = 7;
+            XmNy = 47;
+            XmNwidth = 25;
+            XmNheight = 25;
+            XmNcolumns = 1;
+            XmNeditable = false;
+            };
+        };
+    ShowSource: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 9;
+            XmNy = 8;
+            XmNlabelString = 
+            compound_string("Show Source Document");
+            };
+        };
+    HideSource: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 62;
+            XmNy = 6;
+            XmNlabelString = 
+            compound_string("Hide Source Document");
+            };
+        };
+    SourceTextSW: XmScrolledWindow 
+        {
+        arguments
+            {
+            XmNwidth = 25;
+            XmNheight = 25;
+            XmNborderWidth = 1;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = 8;
+            XmNtopOffset = 9;
+            XmNtopWidget = XmRowColumn VUITaaaab;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 6;
+            XmNbottomAttachment = XmATTACH_FORM;
+            XmNbottomOffset = 5;
+            XmNscrollingPolicy = XmAUTOMATIC;
+            };
+        controls
+            {
+            };
+        };
+    WWWDocInfoDismiss: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 405;
+            XmNy = 9;
+            XmNlabelString = 
+            compound_string("Dismiss");
+            };
+        };
+    WWWDocOpen: XmFormDialog 
+        {
+        arguments
+            {
+            XmNx = 40;
+            XmNy = 725;
+            XmNwidth = 503;
+            XmNborderWidth = 1;
+            XmNresizePolicy = XmRESIZE_ANY;
+            XmNdefaultButton = XmPushButtonGadget WWWDocOpenOk;
+            };
+        controls
+            {
+            XmRowColumn VUITaaaac;
+            XmPushButtonGadget WWWDocOpenOk;
+            XmPushButtonGadget WWWDocInfoCancel;
+            XmPushButtonGadget WWWOpenHelp;
+            };
+        };
+    VUITaaaac: XmRowColumn 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftOffset = 10;
+            XmNtopOffset = 12;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 9;
+            XmNorientation = XmVERTICAL;
+            XmNpacking = XmPACK_COLUMN;
+            XmNnumColumns = 2;
+            };
+        controls
+            {
+            XmLabelGadget 
+                {
+                arguments
+                    {
+                    XmNx = 12;
+                    XmNy = 5;
+                    XmNlabelString = 
+                    compound_string("Document Address:");
+                    };
+                };
+            XmTextField WWWDocOpenText;
+            };
+        };
+    WWWDocOpenOk: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Ok");
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = 12;
+            XmNtopOffset = 10;
+            XmNtopWidget = XmRowColumn VUITaaaac;
+            };
+        };
+    WWWDocInfoCancel: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Cancel");
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftOffset = 441;
+            XmNtopOffset = 0;
+            XmNtopWidget = XmPushButtonGadget WWWDocOpenOk;
+            XmNx = 441;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 6;
+            };
+        };
+    WWWDocOpenText: XmTextField 
+        {
+        arguments
+            {
+            XmNx = 56;
+            XmNy = 5;
+            XmNwidth = 25;
+            XmNheight = 25;
+            XmNcolumns = 1;
+            };
+        };
+    WWWSave: XmFormDialog 
+        {
+        arguments
+            {
+            XmNx = 526;
+            XmNy = 1002;
+            XmNwidth = 435;
+            XmNborderWidth = 1;
+            XmNautoUnmanage = false;
+            XmNdefaultButton = XmPushButtonGadget WWWSaveOk;
+            };
+        controls
+            {
+            XmRowColumn VUITaaaad;
+            XmPushButtonGadget WWWSaveOk;
+            XmPushButtonGadget WWWSaveCancel;
+            XmOptionMenu VUITaaaae;
+            XmPushButtonGadget WWWSaveHelp;
+            };
+        };
+    WWWSaveCancel: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Cancel");
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftOffset = 372;
+            XmNtopOffset = -1+1;
+            XmNx = 372;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 12;
+            XmNtopWidget = XmPushButtonGadget WWWSaveOk;
+            };
+        };
+    WWWSaveOk: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("OK");
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = 10;
+            XmNtopOffset = 10;
+            XmNbottomAttachment = XmATTACH_NONE;
+            XmNbottomOffset = 5;
+            XmNy = 159;
+            XmNtopWidget = XmOptionMenu VUITaaaae;
+            };
+        };
+    VUITaaaad: XmRowColumn 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftOffset = 11;
+            XmNtopOffset = 19;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 14;
+            XmNnumColumns = 2;
+            XmNorientation = XmVERTICAL;
+            XmNpacking = XmPACK_COLUMN;
+            };
+        controls
+            {
+            XmLabelGadget 
+                {
+                arguments
+                    {
+                    XmNx = 14;
+                    XmNy = 2;
+                    XmNlabelString = 
+                    compound_string("Save as:");
+                    };
+                };
+            XmTextField WWWSaveText;
+            };
+        };
+    VUITaaaae: XmOptionMenu 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = 11;
+            XmNtopOffset = 20;
+            XmNtopWidget = XmRowColumn VUITaaaad;
+            XmNlabelString = 
+            compound_string("Format");
+            };
+        controls
+            {
+            XmPulldownMenu WWWSaveFormatMenu;
+            };
+        };
+    WWWSaveText: XmTextField 
+        {
+        arguments
+            {
+            XmNx = 81;
+            XmNy = 23;
+            XmNwidth = 25;
+            XmNheight = 25;
+            XmNcolumns = 1;
+            };
+        };
+    WWWSaveFormatMenu: XmPulldownMenu 
+        {
+        arguments
+            {
+            XmNx = 111;
+            XmNy = 20;
+            XmNborderWidth = 1;
+            };
+        };
+    WWWHistory: XmFormDialog 
+        {
+        arguments
+            {
+            XmNx = 119;
+            XmNy = 1193;
+            XmNwidth = 485;
+            XmNheight = 229;
+            XmNborderWidth = 1;
+            XmNautoUnmanage = false;
+            XmNresizePolicy = XmRESIZE_NONE;
+            };
+        controls
+            {
+            XmPushButtonGadget WWWHistoryDismiss;
+            XmRowColumn WWWHistoryButtons;
+            XmPushButtonGadget WWWHistoryHelp;
+            XmScrolledWindow 
+                {
+                arguments
+                    {
+                    XmNwidth = 25;
+                    XmNheight = 25;
+                    XmNborderWidth = 1;
+                    XmNleftAttachment = XmATTACH_FORM;
+                    XmNtopAttachment = XmATTACH_FORM;
+                    XmNleftOffset = 11;
+                    XmNtopOffset = 11;
+                    XmNrightAttachment = XmATTACH_FORM;
+                    XmNrightOffset = 12;
+                    XmNbottomAttachment = XmATTACH_WIDGET;
+                    XmNbottomWidget = XmRowColumn WWWHistoryButtons;
+                    XmNbottomOffset = 6;
+                    };
+                controls
+                    {
+                    XmList WWWHistoryList;
+                    };
+                };
+            };
+        };
+    WWWHistoryDismiss: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Dismiss");
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftOffset = 279;
+            XmNtopOffset = 158;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 13;
+            XmNx = 279;
+            XmNy = 198;
+            XmNbottomAttachment = XmATTACH_FORM;
+            XmNbottomOffset = 2;
+            };
+        };
+    WWWMail: XmFormDialog 
+        {
+        arguments
+            {
+            XmNx = 227;
+            XmNy = 972;
+            XmNwidth = 374;
+            XmNborderWidth = 1;
+            XmNautoUnmanage = false;
+            XmNdefaultButton = XmPushButtonGadget WWWMailOk;
+            };
+        controls
+            {
+            XmRowColumn WWWMailTo;
+            XmPushButtonGadget WWWMailOk;
+            XmOptionMenu WWWMailFormat;
+            XmPushButtonGadget WWWMailDismiss;
+            XmLabelGadget VUITaaaaj;
+            XmPushButtonGadget WWWMailHelp;
+            };
+        };
+    WWWMailFormat: XmOptionMenu 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = 11;
+            XmNtopOffset = 17;
+            XmNtopWidget = XmRowColumn WWWMailTo;
+            XmNlabelString = 
+            compound_string("Format");
+            };
+        controls
+            {
+            XmPulldownMenu WWWMailFormatMenu;
+            };
+        };
+    WWWMailFormatMenu: XmPulldownMenu 
+        {
+        arguments
+            {
+            XmNx = 111;
+            XmNy = 20;
+            XmNborderWidth = 1;
+            };
+        };
+    WWWMailTo: XmRowColumn 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = 10;
+            XmNtopOffset = 8;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 11;
+            XmNorientation = XmVERTICAL;
+            XmNpacking = XmPACK_COLUMN;
+            XmNnumColumns = 2;
+            XmNtopWidget = XmLabelGadget VUITaaaaj;
+            };
+        controls
+            {
+            XmLabelGadget 
+                {
+                arguments
+                    {
+                    XmNx = 14;
+                    XmNy = 8;
+                    XmNlabelString = 
+                    compound_string("Send to:");
+                    };
+                };
+            XmTextField WWWMailToText;
+            };
+        };
+    WWWMailOk: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Ok");
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = 8;
+            XmNtopOffset = 16;
+            XmNy = 127;
+            XmNtopWidget = XmOptionMenu WWWMailFormat;
+            };
+        };
+    VUITaaaaj: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Give e-mail address to send result to",separate=true) &
+                compound_string("(eg TonyJ@Slacvm or me@sscvx1.ssc.gov)");
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftOffset = 8;
+            XmNtopOffset = 10;
+            XmNalignment = XmALIGNMENT_BEGINNING;
+            };
+        };
+    WWWHistoryButtons: XmRowColumn 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftOffset = 8;
+            XmNtopOffset = 7;
+            XmNbottomAttachment = XmATTACH_FORM;
+            XmNbottomOffset = 3;
+            XmNy = 196;
+            XmNorientation = XmHORIZONTAL;
+            };
+        };
+    WWWParameters: XmFormDialog 
+        {
+        arguments
+            {
+            XmNy = 1481;
+            XmNborderWidth = 1;
+            XmNautoUnmanage = false;
+            XmNwidth = 444;
+            };
+        controls
+            {
+            XmRowColumn VUITaaaak;
+            XmRowColumn WWWParamCache;
+            XmRowColumn 
+                {
+                arguments
+                    {
+                    XmNborderWidth = 1;
+                    XmNleftAttachment = XmATTACH_OPPOSITE_WIDGET;
+                    XmNtopAttachment = XmATTACH_WIDGET;
+                    XmNleftOffset = 0;
+                    XmNtopOffset = 14;
+                    XmNtopWidget = XmRowColumn WWWParamCache;
+                    XmNorientation = XmHORIZONTAL;
+                    XmNleftWidget = XmRowColumn WWWParamCache;
+                    XmNbottomAttachment = XmATTACH_NONE;
+                    XmNbottomOffset = 26;
+                    XmNheight = 37;
+                    };
+                controls
+                    {
+                    XmPushButtonGadget WWWParamOk;
+                    XmPushButtonGadget WWWParamApply;
+                    XmPushButtonGadget WWWParamSave;
+                    XmPushButtonGadget WWWParamReset;
+                    XmPushButtonGadget WWWParamDismiss;
+                    };
+                };
+            XmPushButtonGadget WWWParamHelp;
+            };
+        };
+    VUITaaaak: XmRowColumn 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftOffset = 18;
+            XmNtopOffset = 22;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 22;
+            XmNentryAlignment = XmALIGNMENT_END;
+            XmNnumColumns = 2;
+            XmNorientation = XmVERTICAL;
+            XmNpacking = XmPACK_COLUMN;
+            };
+        controls
+            {
+            XmLabelGadget 
+                {
+                arguments
+                    {
+                    XmNx = 19;
+                    XmNy = 6;
+                    XmNlabelString = 
+                    compound_string("Home Page:");
+                    };
+                };
+            XmLabelGadget 
+                {
+                arguments
+                    {
+                    XmNx = 5;
+                    XmNy = 25;
+                    XmNlabelString = 
+                    compound_string("Default Gateway:");
+                    };
+                };
+            XmTextField WWWParamHome;
+            XmTextField WWWParamGate;
+            };
+        };
+    WWWParamOk: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Ok");
+            XmNx = 11;
+            XmNy = 7;
+            };
+        };
+    WWWParamCache: XmRowColumn 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            XmNleftAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = -1;
+            XmNtopOffset = 14;
+            XmNtopWidget = XmRowColumn VUITaaaak;
+            XmNleftWidget = XmRowColumn VUITaaaak;
+            };
+        controls
+            {
+            XmToggleButtonGadget WWWParamCacheEnable;
+            XmScale WWWParamCacheSize;
+            };
+        };
+    WWWParamHome: XmTextField 
+        {
+        arguments
+            {
+            XmNx = 5;
+            XmNy = 48;
+            XmNwidth = 25;
+            XmNheight = 25;
+            XmNcolumns = 1;
+            };
+        };
+    WWWParamGate: XmTextField 
+        {
+        arguments
+            {
+            XmNx = 7;
+            XmNy = 86;
+            XmNwidth = 25;
+            XmNheight = 25;
+            XmNcolumns = 1;
+            };
+        };
+    WWWParamCacheEnable: XmToggleButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Enable Document Caching");
+            XmNx = 5;
+            XmNy = 10;
+            };
+        };
+    WWWParamCacheSize: XmScale 
+        {
+        arguments
+            {
+            XmNx = 5;
+            XmNy = 31;
+            XmNborderWidth = 1;
+            XmNorientation = XmHORIZONTAL;
+            XmNshowValue = true;
+            XmNtitleString = 
+            compound_string("Maximum Cache Size");
+            XmNmaximum = 20;
+            XmNminimum = 2;
+            };
+        };
+    WWWParamDismiss: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Dismiss");
+            XmNx = 34;
+            XmNy = 5;
+            };
+        };
+    WWWParamApply: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 35;
+            XmNy = 6;
+            XmNlabelString = 
+            compound_string("Apply");
+            };
+        };
+    WWWParamSave: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 99;
+            XmNy = 10;
+            XmNlabelString = 
+            compound_string("Save");
+            };
+        };
+    WWWParamReset: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 204;
+            XmNy = 11;
+            XmNlabelString = 
+            compound_string("Reset");
+            };
+        };
+    WWWParamHelp: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Help");
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftOffset = 385;
+            XmNtopOffset = 243;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 9;
+            XmNbottomAttachment = XmATTACH_FORM;
+            XmNbottomOffset = 4;
+            XmNy = 243;
+            XmNx = 385;
+            };
+        };
+    WWWKey: XmForm 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            };
+        controls
+            {
+            XmRowColumn WWWButtons;
+            XmRowColumn WWWCommand;
+            XmDrawnButton WWWHome;
+            };
+        };
+    WWWButtons: XmRowColumn 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = -3;
+            XmNtopOffset = 1;
+            XmNtopWidget = XmRowColumn WWWCommand;
+            XmNrightAttachment = XmATTACH_WIDGET;
+            XmNrightWidget = XmDrawnButton WWWHome;
+            XmNrightOffset = 9;
+            };
+        };
+    WWWHome: XmDrawnButton 
+        {
+        arguments
+            {
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftOffset = 435;
+            XmNtopOffset = 4;
+            XmNx = 435;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 5;
+            XmNlabelPixmap = MidasWWWHome;
+            XmNlabelType = XmPIXMAP;
+            XmNpushButtonEnabled = true;
+            };
+        };
+    WWWMailToText: XmTextField 
+        {
+        arguments
+            {
+            XmNx = 240;
+            XmNy = 15;
+            XmNwidth = 25;
+            XmNheight = 25;
+            XmNcolumns = 1;
+            };
+        };
+    WWWMailDismiss: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 293;
+            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNtopWidget = XmPushButtonGadget WWWMailOk;
+            XmNtopOffset = 0;
+            XmNlabelString = 
+            compound_string("Dismiss");
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 7;
+            };
+        };
+    WWWMailHelp: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 305;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNtopWidget = XmRowColumn WWWMailTo;
+            XmNtopOffset = 25;
+            XmNlabelString = 
+            compound_string("Help");
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 8;
+            XmNleftOffset = 305;
+            XmNleftAttachment = XmATTACH_NONE;
+            };
+        };
+    WWWHistoryHelp: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Help");
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftOffset = 334;
+            XmNtopOffset = 0;
+            XmNrightAttachment = XmATTACH_WIDGET;
+            XmNrightOffset = 6;
+            XmNx = 334;
+            XmNy = 200;
+            XmNrightWidget = XmPushButtonGadget WWWHistoryDismiss;
+            XmNtopWidget = XmPushButtonGadget WWWHistoryDismiss;
+            };
+        };
+    WWWOpenHelp: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Help");
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftOffset = 356;
+            XmNtopOffset = 0;
+            XmNtopWidget = XmPushButtonGadget WWWDocOpenOk;
+            XmNx = 356;
+            XmNrightAttachment = XmATTACH_WIDGET;
+            XmNrightOffset = 6;
+            XmNrightWidget = XmPushButtonGadget WWWDocInfoCancel;
+            };
+        };
+    WWWDocInfoHelp: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 303;
+            XmNy = 2;
+            XmNlabelString = 
+            compound_string("Help");
+            };
+        };
+    WWWSaveHelp: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Help");
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftOffset = 320;
+            XmNtopOffset = 0;
+            XmNx = 320;
+            XmNrightAttachment = XmATTACH_WIDGET;
+            XmNrightOffset = 7;
+            XmNtopWidget = XmPushButtonGadget WWWSaveOk;
+            XmNrightWidget = XmPushButtonGadget WWWSaveCancel;
+            };
+        };
+    WWWHistoryList: XmList 
+        {
+        arguments
+            {
+            XmNwidth = 25;
+            XmNheight = 25;
+            };
+        };
+
+value
+    MidasWWWIcon: exported icon(color_table = color_table(background color = ' ', 
+            foreground color = '*'),
+        '                  ****************                ',
+        ' *****************               *                ',
+        ' **               *****************               ',
+        ' * ***************              ***               ',
+        ' * **                    *******  **              ',
+        ' * * *       ************     **  **              ',
+        ' * *  *******            ****** *  **             ',
+        ' * *  **      ***********    ** *  **             ',
+        ' * *  * ******           ***** * * * *            ',
+        ' * *  * **     **********   ** * *  **            ',
+        ' * *  * * *****          **** * **  **            ',
+        ' * *  * * **     ********   * * * *  **           ',
+        ' * *  * * * *****       **** * * **  **           ',
+        ' * *  * * * **    ******   * * * * * * *          ',
+        ' * *  * * * * ****        * * * ** *  **          ',
+        ' * *  * * * * **     ****** * * * * * * *         ',
+        ' * *  * * * * * *****    **  * ** * *  **         ',
+        ' * *  * * * * * **       **  * * * **  * *        ',
+        ' * *  * * * * * * ******** *  * ** * *  **        ',
+        '  * * * * * * * * **    * **  * * * **  * *       ',
+        '  * * * * * * * * * ***** * * * * * * * * *       ',
+        '  * * * * * * * * * ** * * * * * ** * *  **       ',
+        '  * * * * * * * * * * ** * * * * * * **  * *      ',
+        '  * * * * * * * * * * *** * * * * ** * *  **      ',
+        '  * * * * * * * * * ** * **** * * * * **  * *     ',
+        '  * * * * * * * * ** ***  *  ***** ** * * * *     ',
+        '  * * * * * * * ****   *** ****  ***** **  * *    ',
+        '  * * * * * * * **  ** * ** *  ** *  ***** * *    ',
+        '  * * * * * * **  **  *** ** ** **  * *  **** *   ',
+        '  * * * * * ***     ** ***  *  *  ****  *   ***   ',
+        '  * * * * **** ***    **  **  *  * *  **   * *    ',
+        '  * * * * **  **  ***  ***   *  * *  *   ** *     ',
+        '  * * * *** **  **   ***    * ** *  *   * **      ',
+        '  * * **   ** **  ***  *  ** * ** **   * *        ',
+        '  * ****     ** **   *** *  * *  *   ** *         ',
+        '  * *   **     ** **   ** ** *  *   *  *          ',
+        '  ****    ***    ** **  **  * **   *  *           ',
+        '  *   **     **    ** *** ** *   **  *            ',
+        '   **   **     ***   ** **  *   *  **             ',
+        '     **   ***     ***  ** **   *  *               ',
+        '       ***   **      ** **   **  *                ',
+        '          **   ***     **   *   *                 ',
+        '            **    **    *  *   *                  ',
+        '******  * *** **    **  ***   *   *   * *** ***   ',
+        '  *  *  * *     ***   ***   **    *   * *   *  *  ',
+        '  *  **** **       **   *  *      * * * **  ***   ',
+        '  *  *  * *          ** * *       ***** *   *  *  ',
+        '  *  *  * ***          ***         * *  *** ***   ',
+        '                                                  ',
+        '                                                  ');
+    MidasWWWHome: icon(color_table = color_table(background color = ' ', 
+            foreground color = '*', 
+            rgb(45874,5242,5242) = 'a', 
+            rgb(62913,60816,0) = 'b', 
+            rgb(0,65535,65535) = 'c', 
+            rgb(65535,0,0) = 'd', 
+            rgb(61602,60947,60947) = 'e', 
+            rgb(0,41068,155) = 'f'),
+        '                                                            ',
+        '                                                            ',
+        '                                                            ',
+        '                        ddddddddddddd                       ',
+        '                       ddddddddddddddd eeeee                ',
+        '                      dddd**dddddddddddeeeee                ',
+        '                      ddd*aa*ddadddadddeeeee                ',
+        '                     daa*aaaa*dddddddddeeaae                ',
+        '                   dddd*aaaaaa*dddaddddeeeee                ',
+        '                   ddd*aaaaaaaa*dddddddeaaee                ',
+        '                 dddd*aaaaaaaaa*dddddddeeeee                ',
+        '                aadd*aaaaaaaaaaa*ddddddeeeeed               ',
+        '               dddd*aaaaaccaaaaaa*dddaddeeeedd              ',
+        '              dddd*aaaaaccccaaaaaa*ddaaddeeeddd             ',
+        '             dddd*aaaaaccccccaaaaaa*daadddeedddd            ',
+        '            dddd*aaaaaccccccccaaaaaa*dddddddddadd           ',
+        '           ddad*aaaaa*ccccccccaaaaaaa*dddddddddadd          ',
+        '          dddd*aaaaaa*ccccccccaaaaaaaa*dddddddddddd         ',
+        '         dddd*aaaaaaa*ccccccccaaaaaaaaccddddadddadd         ',
+        '        daad*aaaaaaaa*********aaaaaaaaac*dddadddaddd        ',
+        '       dddd*aaaaaaaaaaaaaaaaaaaaaaaaaaaa*dddddddddddd       ',
+        '      dddd*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*dddddaddadd       ',
+        '     dddd*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*ddddddaaddd      ',
+        '     ddd*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*ddddddddddd     ',
+        '     dd*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*********dd     ',
+        '      *aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*aaaaaaa*       ',
+        '      *aaaaaaaccaaaaaaaaaaaaaaaaaaaaaccaaaaa*aaaaaaa*       ',
+        '      *aaaaaaccccaaaaaaaaaaaaaaaaaaaccccaaaa*aaaaaaa*       ',
+        '      *aaaaaccccccaaaa*******aaaaa*ccccccaaa*aaaaaaa*       ',
+        '      *aaaa*ccccccaaaa*bbbbbbaaaaa*ccccccaaa*aaaaaaa*       ',
+        '      *aaaa*ccccccaaaa*bbbbbbaaaaa*ccccccaaa*aaaaaaa*       ',
+        '      *aaaa*ccccccaaaa*bbbbbbaaaaa*ccccccaaa*aaaaaaa*       ',
+        '      *aaaa*ccccccaaaa*bbbbbbaaaaa*ccccccaaa*aaaaaaa*       ',
+        '      *aaaa*ccccccaaaa*bbbbbbaaaaa*ccccccaaa*aaaaaaa*       ',
+        '      *aaaa*ccccccaaaa*bbbbbbaaaaa*ccccccaaa*aaaaaaa*       ',
+        '      *aaaa*******aaaa*beebbbaaaaa*******aaa*aaaaaaa*       ',
+        '      *aaaaaaaaaaaaaaa*beebbbaaaaaaaaaaaaaaa*aaaaaaa*       ',
+        '      *aaaaaaaaaaaaaaa*bbbbbbaaaaaaaaaaaaaaa*aaaaaaa*       ',
+        '      *aaaaaaaaaaaaaaa*bbbbbbaaaaaaaaaaaaaaa*aaaaaaa*       ',
+        '      *aaaaaaaaaaaaaaa*bbbbbbaaaaaaaaaaaaaaa*aaaaaaa*fff    ',
+        '      *aaaaaaaaaaaaaaa*bbbbbbaaaaaaaaaaaaaaa*aaaaaaa*f f    ',
+        '    ff*****************bbbbbb************************fff    ',
+        '    fffffffffffffffffffffff f fffffffffffff fffffffffff     ',
+        '    ffffffffffffffffff f ff   fffffff f ffffffffff fffff    ',
+        '     f fffff   f ff   fff  ffffffffffffffffffffffffff f     ',
+        '    f   f ffffffff  fff fff   f ffffffffffffffff fffff f    ',
+        '     ff f   ff ff fffffffffffff  fff ffff f   ffff  ff      ',
+        '         f  f  fffff f      f  ffff  ff     ff ffff  f      ',
+        '              f ffff     fffff ffffff fffff  ffffffff       ',
+        '             ffff    f ffff ff f     ffff f ffff f          ',
+        '                     ffff                                   ',
+        '                                                            ',
+        '                                                            ',
+        '                                                            ',
+        '                                                            ');
+
+end module;
+

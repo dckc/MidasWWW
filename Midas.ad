@@ -1,0 +1,347 @@
+midas*MidasIngotManagerDismiss.activateCallback:	Midas PopDown .^
+midas*Apply.activateCallback:	Set Value currentWidget GetValue(MidasResourceManager...List,selectedItems) GetValue(MidasResourceManager...Text,value)\n\
+Set Sensitive .^.Save True\n\
+Set Sensitive . False
+midas*Apply.currentWidget:	Set Sensitive . False
+midas*Apply.midasIngots:	currentWidget
+midas*MidasHelpDismiss.activateCallback:	Midas PopDown .^^^XmMainWindow
+midas*MidasCreateIngotOk.activateCallback:	Set Ingot Owner %GetValue(.^.MidasCreateIngotNameText,value) ""\n\
+Store Callback Owner %GetValue(.^.MidasCreateIngotNameText,value)\n\
+PopDown .^\n\
+Get Ingots IngotList currentWidget\n
+midas*MidasIngotManagerCallbackApply.activateCallback:	Set Callback currentWidget GetValue(MidasIngotManager...MidasIngotManagerList,selectedItems) GetValue(MidasIngotManager...MidasIngotManagerCallbackText,value)\n\
+Set Ingot Option currentWidget GetValue(MidasIngotManager...MidasIngotManagerList,selectedItems) GetValue(MidasIngotManager...MidasIngotManagerCallbackOption,set)\n\
+Set Sensitive .^.MidasIngotManagerCallbackSave True\n\
+Set Sensitive . False
+midas*MidasIngotManagerCallbackApply.currentWidget:	Set Sensitive . False
+midas*MidasIngotManagerCallbackApply.midasIngots:	currentWidget
+midas*MidasHelpSearchDialog.autoUnmanage:	false
+midas*MidasHelpSearchDialog.selectionLabelString:	Find:
+midas*MidasHelpSearchDialog.cancelCallback:	If HyperGrep(.^^^XmMainWindow...MidasHelpHyper,GetValue(..sb_text,value))==False Beep
+midas*MidasHelpSearchDialog.helpCallback:	PopDown .
+midas*MidasHelpSearchDialog.cancelLabelString:	Apply
+midas*MidasHelpSearchDialog.dialogTitle:	Help Search...
+midas*MidasHelpSearchDialog.okCallback:	If HyperGrep(.^^^XmMainWindow...MidasHelpHyper,GetValue(..sb_text,value))==False Beep\n\
+Else PopDown . 
+midas*MidasHelpSearchDialog.helpLabelString:	Dismiss
+midas*MidasInfoUpButton.activateCallback:	Set Ingot .^^^WidgetList currentWidget Parent(currentWidget)
+midas*MidasInfoUpButton.currentWidget:	Set Sensitive . currentWidget!=Shell(currentWidget)
+midas*MidasInfoUpButton.midasIngots:	currentWidget
+midas*MidasCreateIngotUp.activateCallback:	Set Ingot .^ Owner Parent(Owner)
+midas*MidasCreateIngotUp.midasIngots:	Owner
+midas*MidasCreateIngotUp.Owner:	Set Sensitive . Owner!=Shell(Owner)
+midas*WidgetListList.defaultActionCallback:	If GetValue(.^^^XmMainWindow...Show_Children,sensitive) Invoke Callback  .^^^XmMainWindow...Show_Children activateCallback
+midas*WidgetListList.browseSelectionCallback:	Set Ingot WidgetList "currentWidget" GetValue(.,selectedItems)
+midas*ClassText.currentWidget:	Set Value . value WidgetClass(currentWidget)
+midas*ClassText.midasIngots:	currentWidget
+midas*MidasCreateIngotOwnerText.editable:	false
+midas*MidasCreateIngotOwnerText.midasIngots:	Owner
+midas*MidasCreateIngotOwnerText.Owner:	Set Value . value WidgetName(Owner)
+midas*MidasEvalDismissButton.activateCallback:	Midas PopDown .^
+midas*MidasIngotManagerClassText.currentWidget:	Set Value . value WidgetClass(currentWidget)
+midas*MidasIngotManagerClassText.midasIngots:	currentWidget
+midas*MidasIngotManagerLabel.currentWidget:	
+midas*MidasIngotManagerLabel.midasIngots:	currentWidget
+midas*WidgetListButtons.midasCreateCallback:	Custom Connect WIDGETLIST "<buttons>" .
+midas*WidgetListMenu.midasCreateCallback:	Custom Connect WIDGETLIST "<main>" .
+midas*MidasIngotManagerCallbackOption.currentWidget:	Set Sensitive . False
+midas*MidasIngotManagerCallbackOption.midasIngots:	currentWidget
+midas*MidasIngotManagerCallbackOption.valueChangedCallback:	Set Sensitive .^.MidasIngotManagerCallbackApply True
+midas*MidasHelpHyper.underlineLinks:	true
+midas*MidasHelpHyper.zoomEffect:	false
+midas*MidasHelpHyper.activateCallback:	Set Ingot .^^^XmMainWindow current HyperGetHidden()\n\
+Hyper Load File . current \n\
+Add List Position HelpStack current Position+1\n\
+Set Ingot .^^^XmMainWindow Position Position+1
+midas*MidasHelpHyper.highlightThickness:	0
+midas*Text.currentWidget:	Set Value . value ""\n\
+Set Sensitive . False
+midas*Text.midasIngots:	currentWidget
+midas*Text.valueChangedCallback:	Set Sensitive .^^^...Apply True
+midas*MidasStartup.mapCallback:	Midas Set Value ..MidasStartupText value GetAppResource(Midas,startup)\n\
+Midas Set Sensitive ..MidasStartupSave False
+midas*MidasFilesSelector.okCallback:	Open Uid GetValue(..sb_text,value)\n\
+PopDown .\n
+midas*MidasIngotManagerCreateNew.activateCallback:	Popup MidasCreateNewIngot:parent=.^
+midas*Show_Children.currentWidget:	Set Sensitive . currentWidget!=&&HasChildren(currentWidget)\n\
+if      (GetValue(.,sensitive)&&ChildrenInTree(currentWidget)==True&&GetValue(.,labelString)=="Show Children") Set Value . labelString "Hide Children"\n\
+else if (GetValue(.,sensitive)&&ChildrenInTree(currentWidget)==False&&GetVAlue(.,labelString)=="Hide Children") Set Value . labelString "Show Children"
+midas*Show_Children.midasIngots:	currentWidget
+midas*Show_Children.currentWidgetExecuteWhenCreated:	True
+midas*MidasEvalEvaluateButton.activateCallback:	Set Ingot .^ Result Evalu8(GetValue(.^.MidasEvalExpressionText,value))\n\
+Set Value .^.MidasEvalTypeText value Type(Result)
+midas*MidasIngotManagerValueApply.activateCallback:	Set Ingot currentWidget GetValue(MidasIngotManager...MidasIngotManagerList,selectedItems) GetValue(MidasIngotManager...MidasIngotManagerValueText,value)\n\
+Set Sensitive . False
+midas*MidasIngotManagerValueApply.currentWidget:	Set Sensitive . False
+midas*MidasIngotManagerValueApply.midasIngots:	currentWidget
+midas*MidasStartupDismiss.activateCallback:	PopDown .^
+midas*MidasHelpGoBack.Position:	Set Sensitive . Position>1 
+midas*MidasHelpGoBack.PositionExecuteWhenCreated:	True
+midas*MidasHelpGoBack.midasIngots:	Position
+midas*MidasHelpGoBack.activateCallback:	Set Ingot .^^^XmMainWindow Position Position-1 \n\
+Hyper Load File .^^^XmMainWindow...MidasHelpHyper ListNamePos(HelpStack,Position)
+midas*MidasIngotManagerValueText.currentWidget:	Set Value . value ""\n\
+Set Sensitive . False
+midas*MidasIngotManagerValueText.midasIngots:	currentWidget
+midas*MidasIngotManagerValueText.valueChangedCallback:	Midas Set Sensitive .^.MidasIngotManagerValueApply True
+midas*MidasInfoClassText.currentWidget:	Set Value . value WidgetClass(currentWidget)
+midas*MidasInfoClassText.midasIngots:	currentWidget
+midas*MidasExpressionEvaluator.midasIngots:	Result
+midas*MidasExpressionEvaluator.Result:	
+midas*MidasExpressionEvaluator.mapCallback:	Invoke Callback ..MidasEvalClearButton activateCallback
+midas*WidgetTree.midasIngots:	currentWidget TreeStyle
+midas*WidgetTree.TreeStyleExecuteWhenCreated:	True
+midas*WidgetTree.currentWidgetExecuteWhenCreated:	False
+midas*WidgetTree.TreeStyle:	Set Value . gravity TreeStyle
+midas*WidgetTree.currentWidget:	If currentWidget!="" Current Widget In Tree currentWidget 
+midas*MidasIngotManagerCallbackText.currentWidget:	Set Value . value ""\n\
+Set Sensitive . False
+midas*MidasIngotManagerCallbackText.midasIngots:	currentWidget
+midas*MidasIngotManagerCallbackText.valueChangedCallback:	Set Sensitive .^.MidasIngotManagerCallbackApply True\n\
+Set Sensitive .^.MidasIngotManagerCallbackOption GetValue(.,value)!=""
+midas*MidasStartupText.valueChangedCallback:	Set Sensitive .^.MidasStartupSave True
+midas*MidasInfo.midasIngots:	currentWidget
+midas*MidasInfo.dialogTitle:	Midas - Widget Info
+midas*Save.activateCallback:	Store Resource currentWidget GetValue(MidasResourceManager...List,selectedItems)\n\
+Set Sensitive . False
+midas*Save.currentWidget:	Set Sensitive . False
+midas*Save.midasIngots:	currentWidget
+midas*MidasCallbackManagerLabel.currentWidget:	
+midas*MidasCallbackManagerLabel.midasIngots:	currentWidget
+midas*Label.currentWidget:	
+midas*Label.midasIngots:	currentWidget
+midas*MidasCallbackManagerList.currentWidget:	Unrealize List CallbackList\n\
+Get Callbacks CallbackList currentWidget\n\
+Realize List CallbackList .\n
+midas*MidasCallbackManagerList.midasIngots:	currentWidget
+midas*MidasCallbackManagerList.browseSelectionCallback:	Set Value MidasCallbackManager...MidasCallbackManagerText value GetValue(currentWidget,GetValue(.,selectedItems))\n\
+Set Sensitive MidasCallbackManager...MidasCallbackManagerText True\n\
+Set Sensitive .^^^...MidasCallbackManagerApply False\n\
+Set Sensitive .^^^...MidasCallbackManagerSave False
+midas*WidgetListDialog.title:	Midas - Widget List
+midas*WidgetListDialog.width:	665
+midas*WidgetListDialog.height:	422
+midas*WidgetListDialog.x:	604
+midas*WidgetListDialog.geometry:	288x500+604+32
+midas*WidgetListDialog.y:	32
+midas*MidasHelpDialog.title:	Midas Help
+midas*List.currentWidget:	Unrealize List ResourceList\n\
+If currentWidget!="" Get Resources ResourceList currentWidget\n\
+Else Empty List ResourceList\n\
+Realize List ResourceList .\n
+midas*List.midasIngots:	currentWidget
+midas*List.browseSelectionCallback:	Set Value MidasResourceManager.Text value GetValue(currentWidget,GetValue(.,selectedItems))\n\
+Set Sensitive .^^^...Text True\n\
+Set Sensitive .^^^...Apply False\n\
+Set Sensitive .^^^...Save False
+midas*midas.width:	567
+midas*midas.x:	11
+midas*midas.height:	233
+midas*midas.y:	32
+midas*SGMLHyper.xmp.class:	SGMLPlainText
+midas*SGMLHyper.default.font:	-*-helvetica-medium-*-*-*-*-*-*-*-*-*-*-*
+midas*SGMLHyper.ul.leftIndent:	20
+midas*SGMLHyper.ul.matched:	true
+midas*SGMLHyper.ul.spaceBefore:	3
+midas*SGMLHyper.ul.breakBefore:	true
+midas*SGMLHyper.a.font:	-*-*-*-i-*-*-*-*-*-*-*-*-*-*
+midas*SGMLHyper.a.matched:	true
+midas*SGMLHyper.title.matched:	true
+midas*SGMLHyper.title.class:	SGMLText
+midas*SGMLHyper.h2.spaceAfter:	5
+midas*SGMLHyper.h2.breakAfter:	true
+midas*SGMLHyper.h2.matched:	true
+midas*SGMLHyper.h2.breakBefore:	true
+midas*SGMLHyper.h2.font:	-*-helvetica-bold-*-*-*-*-*-*-*-*-*-*-*
+midas*SGMLHyper.h2.spaceBefore:	5
+midas*SGMLHyper.h3.spaceAfter:	3 
+midas*SGMLHyper.h3.breakAfter:	true
+midas*SGMLHyper.h3.matched:	true
+midas*SGMLHyper.h3.breakBefore:	true
+midas*SGMLHyper.h3.font:	-*-helvetica-medium-*-*-*-*-*-*-*-*-*-*-*
+midas*SGMLHyper.h3.spaceBefore:	3 
+midas*SGMLHyper.li.breakBefore:	true
+midas*SGMLHyper.li.spaceBefore:	3
+midas*SGMLHyper.h1.spaceAfter:	10
+midas*SGMLHyper.h1.breakAfter:	true
+midas*SGMLHyper.h1.matched:	true
+midas*SGMLHyper.h1.breakBefore:	true
+midas*SGMLHyper.h1.font:	-*-helvetica-bold-*-*-*-18-*-*-*-*-*-*-*
+midas*Horizontal_Tree.TreeStyle:	Set Value . set TreeStyle==left
+midas*Horizontal_Tree.TreeStyleExecuteWhenCreated:	True
+midas*Horizontal_Tree.midasIngots:	TreeStyle
+midas*MidasHelpSearch.activateCallback:	Popup .^^^XmMainWindow...MidasHelpSearchDialog
+midas*NameText.currentWidget:	Set Value . value WidgetName(currentWidget)
+midas*NameText.midasIngots:	currentWidget
+midas*MidasEvalTypeText.midasIngots:	Result
+midas*MidasEvalTypeText.Result:	
+midas*MidasCallbackManagerCancel.activateCallback:	PopDown .^
+midas*title.createCallback:	Set Value .^^^XmDialogShell title HyperGetText()
+midas*MidasCreateIngotCancel.activateCallback:	PopDown .^
+midas*MidasIngotManager.autoUnmanage:	false
+midas*MidasCallbackManagerWidgetText.currentWidget:	Set Value . value WidgetName(currentWidget)
+midas*MidasCallbackManagerWidgetText.midasIngots:	currentWidget
+midas*Toggle.currentWidget:	Set Sensitive . currentWidget!=""
+midas*Toggle.midasIngots:	currentWidget
+midas*WidgetList*Tree.XmPushButton.activateCallback:	if GetClickCount()==2 Toggle Children currentWidget \n\
+Set Ingot .^^^XmMainWindow currentWidget TreeToWidget(.)
+midas*WidgetList.midasIngots:	currentWidget TreeStyle
+midas*WidgetList.TreeStyleExecuteWhenCreated:	False
+midas*WidgetList.midasCreateCallback:	Custom Create WIDGETLIST .\n\
+Set Ingot . TreeStyle left\n\
+Create Widget . Tree WidgetTree\n\
+Create Widget Tree ....WidgetTree
+midas*WidgetList.mappedWhenManaged:	true
+midas*WidgetList.:	
+midas*WidgetList.TreeStyle:	
+midas*MidasIngotManagerCallbackSave.activateCallback:	Store Callback currentWidget GetValue(MidasIngotManager...MidasIngotManagerList,selectedItems)\n\
+Set Sensitive . False
+midas*MidasIngotManagerCallbackSave.currentWidget:	Set Sensitive . False
+midas*MidasIngotManagerCallbackSave.midasIngots:	currentWidget
+midas*MidasIngotManagerNameText.currentWidget:	Set Value . value WidgetName(currentWidget)
+midas*MidasIngotManagerNameText.midasIngots:	currentWidget
+midas*Vertical_Tree.TreeStyle:	Set Value . set TreeStyle==top
+midas*Vertical_Tree.TreeStyleExecuteWhenCreated:	True
+midas*Vertical_Tree.midasIngots:	TreeStyle
+midas*MidasCallbackManagerClassText.currentWidget:	Set Value . value WidgetClass(currentWidget)
+midas*MidasCallbackManagerClassText.midasIngots:	currentWidget
+midas*MidasStartupSave.activateCallback:	Store App Resource Midas startup GetValue(.^.MidasStartupText,value)
+midas*MidasEvalClearButton.activateCallback:	Set Value .^.MidasEvalResultText value ""\n\
+Set Value .^.MidasEvalTypeText value ""\n\
+Set Value .^.MidasEvalExpressionText value ""\n
+midas*Destroy.currentWidget:	Set Sensitive . currentWidget!=""
+midas*Destroy.midasIngots:	currentWidget
+midas*MidasCreateIngotNameText.valueChangedCallback:	Set Sensitive .^.MidasCreateIngotOk GetValue(.,value)!=""
+midas*MidasInfoNameText.currentWidget:	Set Value . value WidgetName(currentWidget)
+midas*MidasInfoNameText.midasIngots:	currentWidget
+midas*MidasCallbackManagerText.currentWidget:	Set Value . value ""\n\
+Set Sensitive . False
+midas*MidasCallbackManagerText.midasIngots:	currentWidget
+midas*MidasCallbackManagerText.valueChangedCallback:	Set Sensitive .^^^...MidasCallbackManagerApply True \n
+midas*Pop_Down.currentWidget:	Set Sensitive .  currentWidget!=&&IsManaged(currentWidget)
+midas*Pop_Down.midasIngots:	currentWidget
+midas*Pop_Up.currentWidget:	Set Sensitive . currentWidget!=&&IsManaged(currentWidget)==False
+midas*Pop_Up.midasIngots:	currentWidget
+midas*MidasCreateNewIngot.currentWidget:	Invoke Callback . mapCallback
+midas*MidasCreateNewIngot.midasIngots:	currentWidget Owner
+midas*MidasCreateNewIngot.dialogTitle:	Midas - Create New Ingot
+midas*MidasCreateNewIngot.mapCallback:	Set Ingot . Owner currentWidget\n\
+Set Value ..MidasCreateIngotNameText value ""
+midas*Midas_Command.promptString:	Midas Command
+midas*MidasCallbackManagerApply.activateCallback:	Set Value currentWidget GetValue(MidasCallbackManager...MidasCallbackManagerList,selectedItems) GetValue(MidasCallbackManager...MidasCallbackManagerText,value)\n\
+Set Sensitive .^.MidasCallbackManagerSave True\n\
+Set Sensitive . False
+midas*MidasCallbackManagerApply.currentWidget:	Set Sensitive . False
+midas*MidasCallbackManagerApply.midasIngots:	currentWidget
+midas*MidasInfoButtonBox.midasCreateCallback:	Custom Connect WIDGETLIST "<Info Buttons>" .
+midas*MidasHelp.midasCreateCallback:	Create Widget . SGMLHyper MidasHelpHyper
+midas*MidasHelp.Position:	
+midas*MidasHelp.PositionExecuteWhenCreated:	True
+midas*MidasHelp.midasIngots:	Position
+midas*MidasIngotManagerList.currentWidget:	UnRealize List IngotList\n\
+Get Ingots IngotList currentWidget\n\
+Realize List IngotList .\n
+midas*MidasIngotManagerList.midasIngots:	currentWidget
+midas*MidasIngotManagerList.browseSelectionCallback:	Set Value MidasIngotManager...MidasIngotManagerValueText value GetIngot(currentWidget,GetValue(.,selectedItems))\n\
+Set Value MidasIngotManager...MidasIngotManagerCallbackText value GetCallback(currentWidget,GetValue(.,selectedItems))\n\
+Set Value MidasIngotManager...MidasIngotValueOwnerText value WidgetName(GetValueOwner(currentWidget,GetValue(.,selectedItems)))\n\
+Set Value MidasIngotManager...MidasIngotManagerCallbackOption set GetIngotOption(currentWidget,GetValue(.,selectedItems))\n\
+Set Sensitive .^^^...MidasIngotManagerValueText True\n\
+Set Sensitive .^^^...MidasIngotManagerCallbackText True\n\
+Set Sensitive .^^^...MidasIngotManagerCallbackOption GetCallback(currentWidget,GetValue(.,selectedItems))!=""\n\
+Set Sensitive .^^^...MidasIngotManagerValueApply False\n\
+Set Sensitive .^^^...MidasIngotManagerCallbackApply False\n\
+Set Sensitive .^^^...MidasIngotManagerCallbackSave False
+midas*MidasCallbackManagerSave.activateCallback:	Store Resource currentWidget GetValue(MidasCallbackManager...MidasCallbackManagerList,selectedItems)\n\
+Set Sensitive . False
+midas*MidasCallbackManagerSave.currentWidget:	Set Sensitive . False
+midas*MidasCallbackManagerSave.midasIngots:	currentWidget
+midas*MidasEvalResultText.midasIngots:	Result
+midas*MidasEvalResultText.Result:	Set Value . value Result
+midas.geometry:	567x233+11+32
+midas.startup:	Midas Popup Midas_Main
+midas.title:	MIDAS - Motif Interactive Data Analysis Shell
+idas*SGMLHyper.p.breakBefore:	true
+CUSTOM.CUSTOM.Verb.6:	Popup MidasHelp:Dialog\n\
+Set Ingot MidasHelp Position 1\n\
+Empty List HelpStack\n\
+Add List Position HelpStack midas.help 0\n\
+Hyper Load File MidasHelpHyper midas.help
+CUSTOM.CUSTOM.Verb.1:	Popup MidasHelp:Dialog\n\
+Set Ingot MidasHelp Position 1\n\
+Empty List HelpStack\n\
+Add List Position HelpStack about.help 0\n\
+Hyper Load File MidasHelpHyper about.help
+CUSTOM.CUSTOM.Verb.2:	Popup MidasExpressionEvaluator
+CUSTOM.CUSTOM.Verb.3:	Popup FileList
+CUSTOM.CUSTOM.Verb.4:	Cr \n\
+Load Image MidasHandypak
+CUSTOM.CUSTOM.Verb.5:	Create Shell jazelle:UidFile=Ducsjazelle:Jazelle.Uid :Icon=JazelleIcon\n\
+PopUp JazelleMain\n\
+Load Image MidasJazelle\n\
+Index
+CUSTOM.CUSTOM.Verb.9:	Save Geometry Midas_Main+
+CUSTOM.CUSTOM.Verb.16:	Popup WidgetList:Dialog
+CUSTOM.CUSTOM.Verb.8:	Quit
+CUSTOM.CUSTOM.Verb.15:	Custom Popup CUSTOM
+CUSTOM.CUSTOM.Verb.7:	Invoke Application puzzle
+CUSTOM.CUSTOM.Verb.10:	Custom Write CUSTOM CUSTOM
+CUSTOM.CUSTOM.Verb.11:	Popup MidasStartup
+CUSTOM.CUSTOM.Verb.12:	Popup MidasHelp:Dialog\n\
+Set Ingot MidasHelp Position 1\n\
+Empty List HelpStack\n\
+Add List Position HelpStack fhbenefit.html 0\n\
+Hyper Load File MidasHelpHyper fhbenefit.html
+CUSTOM.CUSTOM.Verb.13:	Popup MidasHelp:Dialog\n\
+Set Ingot MidasHelp Position 1\n\
+Empty List HelpStack\n\
+Add List Position HelpStack hlmain.html 0\n\
+Hyper Load File MidasHelpHyper hlmain.html
+CUSTOM.CUSTOM.Verb.14:	Popup MidasHelp:Dialog\n\
+Set Ingot MidasHelp Position 1\n\
+Empty List HelpStack\n\
+Add List Position HelpStack "/nfs/juno/u1/ey/tonyj/WWW/LineMode/Defaults/Features.html" 0\n\
+Hyper Load File MidasHelpHyper "/nfs/juno/u1/ey/tonyj/WWW/LineMode/Defaults/Features.html" 
+CUSTOM.CUSTOM.Menu.5:	About...\\1#Overview...\\6#Test...\\12#Test2...\\13#Test3...\\14
+CUSTOM.CUSTOM.Menu.4:	Startup...\\11#Verbs and Menus...\\15#......\\0#Save Current Settings\\10#Save Current Geometry\\9
+CUSTOM.CUSTOM.Menu.3:	Quit\\8
+CUSTOM.CUSTOM.Menu.2:	Puzzle\\7
+CUSTOM.CUSTOM.Menu.1:	Control =>\\-3#Tools =>\\-6#Applications =>\\-2#Customize =>\\-4#Help =>\\-5
+CUSTOM.CUSTOM.Menu.6:	Widget Manager...\\16#File Manager...\\3#Expression Evaluator...\\2
+CUSTOM.CUSTOM.Verbs:	About...#Expression Evaluator...#File Manager...#Ida#Jazelle#Overview...#Puzzle#Quit#Save Current Geometry#Save Current Settings#Startup...#Test...#Test2...#Test3...#Verbs and Menus...#Widget Manager...
+CUSTOM.CUSTOM.Menus:	<main>#Applications#Control#Customize#Help#Tools
+CUSTOM.WIDGETLIST.Verb.4:	Midas PopDown .^^
+CUSTOM.WIDGETLIST.Verb.2:	PopDown WidgetList
+CUSTOM.WIDGETLIST.Verb.6:	Popup MidasIngotManager:parent=WidgetList
+CUSTOM.WIDGETLIST.Verb.15:	Custom Popup WIDGETLIST
+CUSTOM.WIDGETLIST.Verb.17:	Popup WidgetList
+CUSTOM.WIDGETLIST.Verb.13:	#Custom Popup WIDGETLIST
+CUSTOM.WIDGETLIST.Verb.11:	Custom Write WIDGETLIST
+CUSTOM.WIDGETLIST.Verb.7:	PopDown currentWidget\n\
+Set Sensitive . False\n\
+Set Sensitive .^.Pop_Up True
+CUSTOM.WIDGETLIST.Verb.5:	#Set Ingot .^^^XmMainWindow TreeStyle left
+CUSTOM.WIDGETLIST.Verb.3:	Destroy currentWidget\n\
+Set Ingot WidgetList "currentWidget" ""
+CUSTOM.WIDGETLIST.Verb.1:	Popup MidasCallbackManager:Parent=WidgetList
+CUSTOM.WIDGETLIST.Verb.16:	#Set Ingot .^^^XmMainWindow TreeStyle top
+CUSTOM.WIDGETLIST.Verb.9:	Popup MidasResourceManager:parent=WidgetList
+CUSTOM.WIDGETLIST.Verb.8:	PopUp currentWidget\n\
+Set Sensitive .  False\n\
+Set Sensitive .^.Pop_Down True
+CUSTOM.WIDGETLIST.Verb.14:	Toggle  currentWidget\n\
+Set Sensitive .^.Pop_Down IsManaged(currentWidget)\n\
+Set Sensitive .^.Pop_Up IsManaged(currentWidget)==False
+CUSTOM.WIDGETLIST.Verb.12:	Toggle Children currentWidget\n\
+If ChildrenInTree(currentWidget) Set Value . labelString "Hide Children"\n\
+Else Set Value . labelString "Show Children"  
+CUSTOM.WIDGETLIST.Verb.10:	Save Geometry WidgetList^
+CUSTOM.WIDGETLIST.Menu.5:	Verbs and Menus...\\15#......\\0#Save Current Settings\\11#Save Current Geometry\\10
+CUSTOM.WIDGETLIST.Menu.4:	Layout =>\\-6#......\\0#Close Window\\2
+CUSTOM.WIDGETLIST.Menu.3:	Control =>\\-4#Tools =>\\-7#Customize =>\\-5
+CUSTOM.WIDGETLIST.Menu.2:	Show Children\\12#Pop Up\\8#Pop Down\\7#Toggle\\14#Destroy\\3
+CUSTOM.WIDGETLIST.Menu.1:	Callback Manager...\\1#Resource Manager...\\9#Ingot Manager...\\6#Widget Manager...\\17#Dismiss\\4
+CUSTOM.WIDGETLIST.Menu.6:	Horizontal Tree\\5#Vertical Tree\\16#......\\0#Show Class\\13
+CUSTOM.WIDGETLIST.Menu.7:	Callback Manager...\\1#Resource Manager...\\9#Ingot Manager...\\6
+CUSTOM.WIDGETLIST.Verbs:	Callback Manager...#Close Window#Destroy#Dismiss#Horizontal Tree#Ingot Manager...#Pop Down#Pop Up#Resource Manager...#Save Current Geometry#Save Current Settings#Show Children#Show Class#Toggle#Verbs and Menus...#Vertical Tree#Widget Manager...
+CUSTOM.WIDGETLIST.Menus:	<Info Buttons>#<buttons>#<main>#Control#Customize#Layout#Tools

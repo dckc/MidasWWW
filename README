@@ -1,0 +1,148 @@
+
+                                        MidasWWW UNIX Installation Instructions
+                        UNIX INSTALLATION INSTRUCTIONS
+                                       
+   These instructions are for UNIX. See the README_VMS file for VMS
+   installation instructions. 
+   
+Requirements
+
+   To install this version of MidasWWW you will need a Unix system with X
+   windows (X11R4 or X11R5) and Motif (version 1.1.0 or greater). 
+   
+   The current version has been tested on the following systems: 
+   
+      SGI - Indigo (4.0.5) 
+      
+      RS6000 (AIX 3.2.2) 
+      
+      HP-UX 
+      
+   MidasWWW should be portable to other unix systems. Please let  me know if
+   you port it to other systems, and let me know of any changes you had to
+   make. 
+   
+Obtaining MidasWWW
+
+   You can obtain MidasWWW as a compressed TAR file via  anonymous FTP from 
+   FreeHEP.Scri.Fsu.Edu, in directory  
+   
+
+/pub/freehep/networking_email_news/midaswww
+
+   After obtaining the TAR file, uncompress it and detar it using the commands:
+   
+
+uncompress midaswww-1.0.tar.Z
+tar -xvf midaswww-1.0.tar
+cd midaswww-1.0
+
+Building
+
+   There are two ways to go about building MidasWWW. The way that is in
+   principle recommended is to use the standard X-windows utility xmkmf
+   (x-make-makefile). This facility is supposed to take into account any
+   machine dependencies, and to correctly link against the correct libraries on
+   your machine. I have found a number of problems with using xmkmf however: 
+   
+      It appears not to be installed on many machines 
+      
+      It doesn't appear to always do as good a job as one would like in
+      removing machine dependencies. 
+      
+   Consequently we support two ways of building MidasWWW, with xmkmf or without
+   xmkmf, choose one! 
+   
+  WITH XMKMF
+  
+   Build MidasWWW as follows: 
+   
+
+xmkmf
+make
+
+  WITHOUT XMKMF
+  
+   Choose the one of the following makefiles: 
+   
+Makefile.sgi    Makefile.aix32  Makefile.hp 
+
+   If a standard makefile doesn't exist for your machine, then either try using
+   xmkmf or try making one yourself using one of the above as a starting point.
+   If you succeed please send the new Makefile back to me so that others can
+   benefit from your work. 
+   
+   Then use the following commands (where MMMM is the makefile you chose): 
+   
+
+cp MMMM Makefile
+make
+
+Testing
+
+   To try out MidasWWW first make sure your DISPLAY envirnonment variable is
+   set up correctly.  Then issue the command: 
+   
+
+$ make test
+
+   Please ignore the message 
+   
+
+X Toolkit Warning: Urm__FetchLiteral: Can't find literal 'MidasWWWIcon' - MrmNO
+T_FOUND
+
+   This is a known bug. 
+   
+  NOTES
+  
+   On HP machines these extra error messages are generated: 
+   
+
+Warning: translation table syntax error: Missing ':'after event sequence.
+Warning: ... found while parsing ''
+
+   I have no idea why but they don't seem to do any harm. 
+   
+Installation
+
+   At run time there are five files that must be successfully accessed in order
+   for MidasWWW to run correctly. These files are: 
+   
+  midaswww               The binary executable file 
+                         
+  midas.uid              User Interface Description file 
+                         
+  midaswww.uid           User Interface Description file 
+                         
+  Midas.ad               X-Applications Default File 
+                         
+  Midaswww.ad            X-Applications Default File 
+                         
+   If you do not install all five files MidasWWW will not run. 
+   
+   The following commands will install MidasWWW for public use on most systems.
+   
+
+cp midaswww     /usr/bin/X11/midaswww
+cp midas.uid    /usr/lib/X11/uid/midas.uid
+cp midaswww.uid /usr/lib/X11/uid/midaswww.uid
+cp Midas.ad     /usr/lib/X11/app-defaults/Midas
+cp Midaswww.ad  /usr/lib/X11/app-defaults/Midaswww
+
+   Once this is done the MidasWWW browser can be run using the command 
+   
+
+midaswww
+
+  NOTES
+  
+      The directory /usr/lib/X11/uid often doesn't exist and must be greated
+      using mkdir. 
+      
+      The uid files must be installed in a directory searched by the routine
+      MrmOpenHierarchy. See the man page for that routine for more details. 
+      
+      The .ad files must be installed in the appropriate app-defaults
+      directory, WITHOUT the .ad suffix.
+

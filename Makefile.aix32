@@ -1,0 +1,15 @@
+# Generic makefile - Unix (rs6000) version
+#
+            LDLIBS = -lXm -lPW -lIM -lXt -lX11 -lMrm 
+         LDOPTIONS = -bnodelcsect
+            CFLAGS = -O -DAIXV3 -D_BSD -Dqnoro $(DEFINES) 
+                RM = rm -f
+
+include CommonMakefile
+
+$(PGM):: $(OBJS) 
+	$(RM) $@
+	$(CC) -o $@ $(OBJS) $(LDOPTIONS) $(LDLIBS)
+
+
+

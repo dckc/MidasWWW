@@ -1,0 +1,114 @@
+     MAJORVERSION = 1
+     MINORVERSION = 0
+          VERSION = $(MAJORVERSION).$(MINORVERSION)
+              PGM = midaswww
+            CLASS = Midaswww
+              DIR = $(PGM)-$(VERSION)
+
+          DEFINES = -DVERSION="\"$(VERSION)\""
+
+          HEADERS = \
+		SGMLAnchorText.h \
+		SGMLAnchorTextP.h \
+		SGMLCompositeText.h \
+		SGMLCompositeTextP.h \
+		SGMLFormattedText.h \
+		SGMLFormattedTextP.h \
+		SGMLHyper.h \
+		SGMLHyperP.h \
+		SGMLListText.h \
+		SGMLListTextP.h \
+		SGMLMarkerText.h \
+		SGMLMarkerTextP.h \
+		SGMLPlainText.h \
+		SGMLPlainTextP.h \
+		SGMLText.h \
+		SGMLTextP.h \
+		Tree.h \
+		TreeP.h \
+		midas.h \
+		midasconvert.h \
+		midaserrors.h \
+		midaslist.h \
+		midasshell.h \
+		midasoperand.h \
+		midasshell.h \
+		midaswidget.h
+
+            SRCS = \
+		SGMLAnchorText.c \
+		SGMLCompositeText.c \
+		SGMLFormattedText.c \
+		SGMLHyper.c \
+		SGMLListText.c \
+		SGMLMarkerText.c \
+		SGMLPlainText.c \
+		SGMLText.c \
+		Tree.c \
+		custom.c \
+		dxm.c \
+		midas.c \
+		midasclass.c \
+		midasconvert.c \
+		midasdeclare.c \
+		midasevaluate.c \
+		midasingot.c \
+		midaslist.c \
+		midasloadimage.c \
+		midaswww.c \
+		midasutil.c
+
+            OBJS = \
+		SGMLAnchorText.o \
+		SGMLCompositeText.o \
+		SGMLFormattedText.o \
+		SGMLHyper.o \
+		SGMLListText.o \
+		SGMLMarkerText.o \
+		SGMLPlainText.o \
+		SGMLText.o \
+		Tree.o \
+		custom.o \
+		dxm.o \
+		midas.o \
+		midasclass.o \
+		midasconvert.o \
+		midasdeclare.o \
+		midasevaluate.o \
+		midasingot.o \
+		midaslist.o \
+		midasloadimage.o \
+		midaswww.o \
+		midasutil.o
+
+            UILS = \
+                midas.uil \
+                midaswww.uil
+
+             UIDS = \
+                midas.uid \
+                midaswww.uid
+
+           OTHERS = \
+                Imakefile \
+                CommonMakefile \
+                Makefile.hp \
+                Makefile.sgi \
+                Makefile.aix32 \
+                Midas.ad \
+                Midaswww.ad \
+                descrip.mms \
+                midaswww.opt \
+                README_VMS \
+                README
+
+world::	$(PGM) $(UIDS)
+
+
+.SUFFIXES : .uid .uil
+
+.uil.uid:
+	uil -o $*.uid $<
+
+test::	$(PGM) $(UIDS) 
+	XUSERFILESEARCHPATH=./%N.ad ; export XUSERFILESEARCHPATH; ./$(PGM)

@@ -1,0 +1,119 @@
+
+                                         MidasWWW VAX Installation Instructions
+                         VAX INSTALLATION INSTRUCTIONS
+                                       
+   These instructions are for the VAX. See  README file for UNIX installation
+   instructions. 
+   
+Requirements
+
+   To install this version of MidasWWW you will need a VAX running VMS 5.4 or
+   greater, with DecWindows/Motif and C installed. You will also need  MMS to
+   be able to build MidasWWW in the standard way (although you could certainly
+   build MidasWWW without MMS if you do a little more work).  
+   
+   Currently  MidasWWW has only been run with  Multinet TCP/IP software. It
+   should be possible to run it with other versions of TCP/IP for the VAX
+   without too much trouble, if you succeed please feed the changes back to 
+   me. 
+   
+Obtaining MidasWWW
+
+   You can obtain MidasWWW as a compressed TAR file via  anonymous FTP from 
+   FreeHEP.Scri.Fsu.Edu, in directory  
+   
+
+/pub/freehep/networking_email_news/midaswww
+
+   In this case you will need  TAR2VMS  and some way to uncompress the file (I
+   don't know of a VMS version of uncompress...I usually uncompress files on
+   UNIX and then ship the tar file to VMS). 
+   
+   Alternatively if you are on HEPNET you can get a VMS  BACKUP  version of
+   MidasWWW using DECNET from:  
+   
+
+SLACVX::DISK$SLD_FAC0:[EXPORT]MIDASWWW_1_0.BCK
+
+   (SLACVX is HEPNET node 44.481). To unpack the backup file use the command: 
+   
+
+$ backup/log MIDASWWW_1_0.BCK/save *.*
+
+Building
+
+   Once you have obtained MidasWWW and unpacked it, set your default directory
+   to be the directory containing the unpacked files. To build MidasWWW use the
+   following command: 
+   
+
+$ mms all
+
+Testing
+
+   To try out MidasWWW first make sure your X windows DISPLAY is set up
+   correctly (use the  SET DISPLAY command to set it). Then issue the command: 
+   
+
+$ mms test
+
+   Please ignore the message 
+   
+
+X Toolkit Warning: Urm__FetchLiteral: Can't find literal 'MidasWWWIcon' - MrmNO
+T_FOUND
+
+   This is a known bug. 
+   
+Installing
+
+   To install MidasWWW five files must be placed in a public area. These are: 
+   
+  MIDASWWW.EXE           The executable file  
+                         
+  MIDAS.UID              User Interface definition file 
+                         
+  MIDASWWW.UID           User Interface definition file 
+                         
+  MIDAS.DAT              X-resource file 
+                         
+  MIDASWWW.DAT           X-resource file 
+                         
+   If you do not install all five files MidasWWW will not run. The .EXE file
+   can be installed anywhere (for example in the SYS$SYSTEM: directory), and a
+   suitable global symbol should be defined in the system login file. A
+   suitable definition is: 
+   
+
+$ MIDASWWW == "$SYS$SYSTEM:MIDASWWW -NAME MIDASWWW"
+
+   The four remaining files must be installed in a directory pointed to by the
+   logical name DECW$SYSTEM_DEFAULTS, for example in
+   SYS$COMMON:[DECW$DEFAULTS.USER]. 
+   
+   Once this has been done your users will be able to start MidasWWW by using
+   the command: 
+   
+
+$ MIDASWWW
+
+Starting MidasWWW from your Session Manager
+
+   If you wish "World Wide Web" to appear in the applications menu of your
+   DecWindows session manager or FileView then you must install two more files.
+   These are: 
+   
+  MIDASWWW.VUE$DAT       Defines an entry in the "Application" menu 
+                         
+  VUE$MIDASWWW.COM       Runs MidasWWW from FileView 
+                         
+   (These files are only included in the BACKUP version of the MidasWWW
+   distribution). Both files must be installed in a directory pointer to by
+   VUE$LIBRARY, for example SYS$COMMON:[VUE$LIBRARY.USER]. 
+   
+   Please let me know if you encounter any problems. 
+   
+                                                                   Tony Johnson
+                                                                               
+                                                Tony_Johnson@Slac.Stanford.Edu 
+

@@ -1,0 +1,8 @@
+midaswww/lib/inc=(tree,sgmlanchortext,sgmlcompositetext,sgmlplaintext, -
+                  sgmlformattedtext,sgmlhyper,sgmltext,sgmlmarkertext, -
+                  sgmllisttext)
+sys$share:DECW$DXMLIBSHR/SHAREABLE
+sys$share:DECW$XLIBSHR/SHAREABLE
+multinet_socket_library/share
+
+psect_attr = SYS_ERRLIST, shr, nowrt

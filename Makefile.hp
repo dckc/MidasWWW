@@ -1,0 +1,15 @@
+# Generic makefile - Unix (hp) version
+#
+            LDLIBS = -lMrm -lXm -lX11 -lXt
+         LDOPTIONS = -L/usr/lib/Motif1.1 -L/usr/lib/X11R4
+            CFLAGS = -D_NO_PROTO $(DEFINES) -I/usr/include/X11R4 -I/usr/include/Motif1.1
+                RM = rm -f
+
+include CommonMakefile
+
+$(PGM):: $(OBJS) 
+	$(RM) $@
+	$(CC) -o $@ $(OBJS) $(LDOPTIONS) $(LDLIBS)
+
+
+

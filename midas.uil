@@ -1,0 +1,2758 @@
+module vuitDummy
+    names = case_sensitive
+
+value
+    Midas_Custom_Button_Width: 70;
+    Midas_Cusom_Button_Offset: -35;
+    Midas_Custom_Large_Font: font_table(font('-*-HELVETICA-BOLD-R-*--*-180-*-*-*-*-ISO8859-1'));
+    HandyPakIcon: exported icon(color_table = color_table(background color = ' ', 
+            foreground color = '*'),
+        '                                        ',
+        ' ***************************************',
+        ' *                                *   **',
+        ' *                               **  * *',
+        ' *            *    ***   *    ** *  *  *',
+        ' *  ** ***    * **   **  *         *   *',
+        ' *       *    **      *      **   *    *',
+        ' * *    * *  *   *               *     *',
+        ' *     * *                      *      *',
+        ' *    ****   *        **       *      **',
+        ' *     *     *         **     *        *',
+        ' *    *          **          *         *',
+        ' *         ** *     ***     *          *',
+        ' *  * * * * *   *    *     *           *',
+        ' *  * *** *    **         *            *',
+        ' *     *  *       **     *            **',
+        ' *     *   *            *              *',
+        ' *           *  *      *               *',
+        ' * *     *    **      *                *',
+        ' *      *            *                 *',
+        ' *     *            *           *      *',
+        ' *     * *  **     *      *     *    ***',
+        ' *          *     *       *     *      *',
+        ' * *  **    ***  *        *    ***     *',
+        ' * *  *      ** *        ***   * *     *',
+        ' *   ****     **         * *   ***     *',
+        ' *      *     *     *    ***    *      *',
+        ' *  *        *      *     *     *     **',
+        ' *  *      **      ***    *     *      *',
+        ' *    ***  *       * *    *            *',
+        ' *        *   *    ***                 *',
+        ' *  *    *    *     *                  *',
+        ' *      *    ***    *                  *',
+        ' *     **    * *                      **',
+        ' *    *      ***                       *',
+        ' *   *        *                        *',
+        ' *  *         *                        *',
+        ' * *                *               *  *',
+        ' **    *    *   *   *   *   *   *   *  *',
+        ' ***************************************');
+    MidasIcon: exported icon(color_table = color_table(background color = ' ', 
+            foreground color = '*'),
+        '**           **        *           **** ',
+        ' ***        *  *      * *        **   * ',
+        '  ****     *    *    *   *     **    *  ',
+        '   *  **  *      *  *     *  **     **  ',
+        '    *   **        **       **       *   ',
+        '     *                             *    ',
+        '      *                           **    ',
+        '       *                          *     ',
+        '        *                        *      ',
+        '         *                    ****      ',
+        '          ********************** *      ',
+        '         *                  ******      ',
+        '         *                  ******      ',
+        '         *  ***     ****    ******      ',
+        '         * *   **  *    *   ******      ',
+        '         *  *** *   ***     ******      ',
+        '        ** * * *   * * *    ******      ',
+        '        **  *** *   ***     ******      ',
+        '       * *      *           ******      ',
+        '       ***      *           ******      ',
+        '       * *     *            ******      ',
+        '       ***    **  ** *      ******      ',
+        '       ***    *** ***       ******      ',
+        '        **      **          ******      ',
+        '       ***                  ***** *     ',
+        '       ***     ** **        *******     ',
+        '       ***   *********     ********     ',
+        '       ***     *****      * *******     ',
+        '      *** *              ********* *    ',
+        '      ***  *    ***     ** * * * **     ',
+        '       ******   ***    ***** *****      ',
+        '      *  *****  ***   ***********       ',
+        '      * ** ****  *   * * ***** ***      ',
+        '       ** ** ********   **** *****      ',
+        '       ******   ***    ********   ****  ',
+        '   ****    *  **   *****              **',
+        '***      ** ** *     ***                ',
+        '          **** *       ***              ',
+        '            **                          ',
+        '                                        ');
+    list_offset: 7;
+    Buitton_Bottom_Offset: 8;
+    LabelTextOffset: -5;
+
+list
+    Midas_Custom_Label: arguments
+        {
+        XmNtopOffset = 10;
+        XmNleftOffset = 9;
+        XmNfontList = Midas_Custom_Large_Font;
+        };
+
+procedure
+    midas_command_proc();
+    CustomCreate(integer);
+    CustomDelVerb();
+    CustomAddVerb();
+    CustomSelVerb();
+    CustomAddMenu();
+    CustomDelMenu();
+    CustomSelMenu();
+    CustomVMAddSeparator();
+    CustomUpdateSensitivity();
+    CustomVMAddMenu();
+    CustomVMAddVerb();
+    CustomVMDel();
+    CustomVMUp();
+    CustomVMDown();
+    CustomSelConfMenu();
+    CustomVMSel();
+    CustomSelConfVerb();
+    CustomVMSelConf();
+    CustomApply();
+    CustomOk();
+    CustomReset();
+    CustomCancel();
+    CustomExit(integer);
+    SendMidas(string);
+    midas_exit(integer);
+
+object
+    Midas_Main: XmMainWindow 
+        {
+        arguments
+            {
+            XmNworkWindow = XmCommand Midas_Command;
+            };
+        controls
+            {
+            XmCommand Midas_Command;
+            XmMenuBar 
+                {
+                callbacks
+                    {
+                    MrmNcreateCallback = procedures
+                        {
+                        SendMidas(
+                        "Custom Connect CUSTOM \"<main>\" .");
+                        };
+                    };
+                };
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                SendMidas(
+                "Custom Create CUSTOM .");
+                };
+            };
+        };
+    Midas_Command: XmCommand 
+        {
+        arguments
+            {
+            };
+        callbacks
+            {
+            XmNcommandEnteredCallback = procedures
+                {
+                midas_command_proc();
+                };
+            MrmNcreateCallback = procedures
+                {
+                SendMidas(
+                "Midas Register Name MidasCommand .");
+                };
+            };
+        };
+    Midas_Custom: XmFormDialog 
+        {
+        arguments
+            {
+            XmNx = 5;
+            XmNy = 500;
+            XmNwidth = 557;
+            XmNheight = 496;
+            XmNborderWidth = 1;
+            XmNresizePolicy = XmRESIZE_NONE;
+            XmNfractionBase = 90;
+            XmNdialogTitle = 
+            compound_string("Midas Customize Verbs and Menus");
+            };
+        controls
+            {
+            XmForm 
+                {
+                arguments
+                    {
+                    XmNx = 251;
+                    XmNy = 7;
+                    XmNwidth = 25;
+                    XmNheight = 26;
+                    XmNborderWidth = 1;
+                    XmNtopAttachment = XmATTACH_FORM;
+                    XmNleftAttachment = XmATTACH_POSITION;
+                    XmNleftOffset = 0;
+                    XmNtopOffset = 0;
+                    XmNleftPosition = 60;
+                    XmNrightOffset = 0;
+                    XmNrightAttachment = XmATTACH_FORM;
+                    XmNbottomOffset = 0;
+                    XmNbottomAttachment = XmATTACH_WIDGET;
+                    XmNbottomWidget = XmForm Midas_Custom_Buttons;
+                    };
+                controls
+                    {
+                    XmLabelGadget Midas_Custom_Verb_Menu_Label;
+                    XmPushButtonGadget Midas_Custom_Add_Verb;
+                    XmPushButtonGadget 
+                        {
+                        arguments
+                            {
+                            XmNx = 91;
+                            XmNy = 252;
+                            XmNlabelString = 
+                            compound_string("Add Menu");
+                            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+                            XmNleftAttachment = XmATTACH_POSITION;
+                            XmNleftPosition = 75;
+                            XmNtopOffset = 0;
+                            XmNleftOffset = Midas_Cusom_Button_Offset;
+                            XmNwidth = Midas_Custom_Button_Width;
+                            XmNtopWidget = XmPushButtonGadget Midas_Custom_Add_Verb;
+                            };
+                        callbacks
+                            {
+                            MrmNcreateCallback = procedures
+                                {
+                                CustomCreate(5);
+                                };
+                            XmNactivateCallback = procedures
+                                {
+                                CustomVMAddMenu();
+                                };
+                            };
+                        };
+                    XmPushButtonGadget Midas_Custom_Separator;
+                    XmPushButtonGadget 
+                        {
+                        arguments
+                            {
+                            XmNx = 94;
+                            XmNy = 345;
+                            XmNlabelString = 
+                            compound_string("Remove");
+                            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+                            XmNleftAttachment = XmATTACH_POSITION;
+                            XmNleftPosition = 75;
+                            XmNtopOffset = 0;
+                            XmNleftOffset = Midas_Cusom_Button_Offset;
+                            XmNwidth = Midas_Custom_Button_Width;
+                            XmNtopWidget = XmPushButtonGadget Midas_Custom_Separator;
+                            };
+                        callbacks
+                            {
+                            MrmNcreateCallback = procedures
+                                {
+                                CustomCreate(7);
+                                };
+                            XmNactivateCallback = procedures
+                                {
+                                CustomVMDel();
+                                };
+                            };
+                        };
+                    XmLabelGadget ActiveMenuLabel;
+                    XmScrolledList 
+                        {
+                        arguments
+                            {
+                            XmNwidth = 181;
+                            XmNheight = 160;
+                            XmNlistSizePolicy = XmCONSTANT;
+                            XmNtopAttachment = XmATTACH_WIDGET;
+                            XmNleftAttachment = XmATTACH_FORM;
+                            XmNleftOffset = list_offset;
+                            XmNtopOffset = 0;
+                            XmNrightOffset = list_offset;
+                            XmNrightAttachment = XmATTACH_FORM;
+                            XmNbottomOffset = 1;
+                            XmNbottomAttachment = XmATTACH_WIDGET;
+                            XmNtopWidget = XmLabelGadget Midas_Custom_Verb_Menu_Label;
+                            XmNbottomWidget = XmLabelGadget ActiveMenuLabel;
+                            XmNvisibleItemCount = 999;
+                            XmNx = 20;
+                            XmNy = 5;
+                            };
+                        callbacks
+                            {
+                            MrmNcreateCallback = procedures
+                                {
+                                CustomCreate(8);
+                                };
+                            XmNbrowseSelectionCallback = procedures
+                                {
+                                CustomVMSel();
+                                };
+                            XmNdefaultActionCallback = procedures
+                                {
+                                CustomVMSelConf();
+                                };
+                            };
+                        };
+                    XmPushButtonGadget Midas_Custom_Up;
+                    XmPushButtonGadget 
+                        {
+                        arguments
+                            {
+                            XmNx = 134;
+                            XmNy = 252;
+                            XmNlabelString = 
+                            compound_string("Down");
+                            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+                            XmNleftAttachment = XmATTACH_POSITION;
+                            XmNleftPosition = 75;
+                            XmNtopOffset = 0;
+                            XmNleftOffset = Midas_Cusom_Button_Offset;
+                            XmNwidth = Midas_Custom_Button_Width;
+                            XmNtopWidget = XmPushButtonGadget Midas_Custom_Up;
+                            };
+                        callbacks
+                            {
+                            MrmNcreateCallback = procedures
+                                {
+                                CustomCreate(3);
+                                };
+                            XmNactivateCallback = procedures
+                                {
+                                CustomVMDown();
+                                };
+                            };
+                        };
+                    };
+                };
+            XmForm Midas_Custom_Command;
+            XmForm Midas_Custom_Buttons;
+            XmForm Verb_Form;
+            XmForm 
+                {
+                arguments
+                    {
+                    XmNx = 191;
+                    XmNy = 91;
+                    XmNwidth = 25;
+                    XmNheight = 25;
+                    XmNborderWidth = 1;
+                    XmNtopAttachment = XmATTACH_FORM;
+                    XmNleftAttachment = XmATTACH_POSITION;
+                    XmNleftOffset = 0;
+                    XmNtopOffset = 0;
+                    XmNleftPosition = 30;
+                    XmNrightOffset = 0;
+                    XmNrightAttachment = XmATTACH_POSITION;
+                    XmNrightPosition = 60;
+                    XmNbottomOffset = 0;
+                    XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+                    XmNbottomWidget = XmForm Verb_Form;
+                    XmNdefaultButton = XmPushButtonGadget Menu_Ok_Button;
+                    };
+                controls
+                    {
+                    XmLabelGadget Menu_Label;
+                    XmText Menu_Text;
+                    XmScrolledList 
+                        {
+                        arguments
+                            {
+                            XmNwidth = 181;
+                            XmNheight = 160;
+                            XmNlistSizePolicy = XmCONSTANT;
+                            XmNtopAttachment = XmATTACH_WIDGET;
+                            XmNleftAttachment = XmATTACH_FORM;
+                            XmNleftOffset = list_offset;
+                            XmNtopOffset = 0;
+                            XmNrightOffset = list_offset;
+                            XmNrightAttachment = XmATTACH_FORM;
+                            XmNbottomOffset = list_offset;
+                            XmNbottomAttachment = XmATTACH_WIDGET;
+                            XmNtopWidget = XmLabelGadget Menu_Label;
+                            XmNbottomWidget = XmText Menu_Text;
+                            };
+                        callbacks
+                            {
+                            MrmNcreateCallback = procedures
+                                {
+                                CustomCreate(17);
+                                };
+                            XmNdefaultActionCallback = procedures
+                                {
+                                CustomSelConfMenu();
+                                };
+                            XmNbrowseSelectionCallback = procedures
+                                {
+                                CustomSelMenu();
+                                };
+                            };
+                        };
+                    XmPushButtonGadget Menu_Ok_Button;
+                    XmPushButtonGadget 
+                        {
+                        arguments
+                            {
+                            XmNx = 74;
+                            XmNy = 0;
+                            XmNlabelString = 
+                            compound_string("Delete");
+                            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+                            XmNleftAttachment = XmATTACH_POSITION;
+                            XmNleftOffset = Midas_Cusom_Button_Offset;
+                            XmNtopOffset = 0;
+                            XmNleftPosition = 75;
+                            XmNwidth = Midas_Custom_Button_Width;
+                            XmNtopWidget = XmPushButtonGadget Menu_Ok_Button;
+                            };
+                        callbacks
+                            {
+                            MrmNcreateCallback = procedures
+                                {
+                                CustomCreate(20);
+                                };
+                            XmNactivateCallback = procedures
+                                {
+                                CustomDelMenu();
+                                };
+                            };
+                        };
+                    };
+                };
+            };
+        };
+    Midas_Custom_Buttons: XmForm 
+        {
+        arguments
+            {
+            XmNx = 247;
+            XmNy = 178;
+            XmNwidth = 27;
+            XmNheight = 72;
+            XmNborderWidth = 1;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_POSITION;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNleftPosition = 60;
+            XmNrightOffset = 0;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNbottomOffset = 0;
+            XmNbottomAttachment = XmATTACH_FORM;
+            };
+        controls
+            {
+            XmPushButtonGadget Midas_Custom_OK_Button;
+            XmPushButtonGadget Midas_Custom_Apply_Button;
+            XmPushButtonGadget 
+                {
+                arguments
+                    {
+                    XmNx = 82;
+                    XmNy = 16;
+                    XmNlabelString = 
+                    compound_string("Reset");
+                    XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+                    XmNleftAttachment = XmATTACH_POSITION;
+                    XmNleftOffset = Midas_Cusom_Button_Offset;
+                    XmNtopOffset = 0;
+                    XmNleftPosition = 75;
+                    XmNwidth = Midas_Custom_Button_Width;
+                    XmNtopWidget = XmPushButtonGadget Midas_Custom_Apply_Button;
+                    };
+                callbacks
+                    {
+                    MrmNcreateCallback = procedures
+                        {
+                        CustomCreate(12);
+                        };
+                    XmNactivateCallback = procedures
+                        {
+                        CustomReset();
+                        };
+                    };
+                };
+            XmPushButtonGadget 
+                {
+                arguments
+                    {
+                    XmNx = 86;
+                    XmNy = 51;
+                    XmNlabelString = 
+                    compound_string("Cancel");
+                    XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+                    XmNleftAttachment = XmATTACH_POSITION;
+                    XmNleftOffset = Midas_Cusom_Button_Offset;
+                    XmNtopOffset = 0;
+                    XmNwidth = Midas_Custom_Button_Width;
+                    XmNleftPosition = 75;
+                    XmNtopWidget = XmPushButtonGadget Midas_Custom_OK_Button;
+                    };
+                callbacks
+                    {
+                    MrmNcreateCallback = procedures
+                        {
+                        CustomCreate(11);
+                        };
+                    XmNactivateCallback = procedures
+                        {
+                        CustomCancel();
+                        };
+                    };
+                };
+            };
+        };
+    Midas_Custom_Apply_Button: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 77;
+            XmNy = 9;
+            XmNlabelString = 
+            compound_string("Apply");
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftAttachment = XmATTACH_POSITION;
+            XmNleftOffset = Midas_Cusom_Button_Offset;
+            XmNtopOffset = 10;
+            XmNleftPosition = 25;
+            XmNwidth = Midas_Custom_Button_Width;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                CustomCreate(10);
+                };
+            XmNactivateCallback = procedures
+                {
+                CustomApply();
+                };
+            };
+        };
+    Midas_Custom_OK_Button: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 18;
+            XmNy = 13;
+            XmNlabelString = 
+            compound_string("OK");
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftAttachment = XmATTACH_POSITION;
+            XmNleftOffset = Midas_Cusom_Button_Offset;
+            XmNtopOffset = 40;
+            XmNleftPosition = 25;
+            XmNwidth = Midas_Custom_Button_Width;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                CustomCreate(9);
+                };
+            XmNactivateCallback = procedures
+                {
+                CustomOk();
+                };
+            };
+        };
+    Midas_Custom_Command: XmForm 
+        {
+        arguments
+            {
+            XmNx = 36;
+            XmNy = 316;
+            XmNwidth = 25;
+            XmNheight = 126;
+            XmNborderWidth = 1;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNrightOffset = 0;
+            XmNrightAttachment = XmATTACH_POSITION;
+            XmNrightPosition = 60;
+            XmNbottomOffset = 0;
+            XmNbottomAttachment = XmATTACH_FORM;
+            XmNresizePolicy = XmRESIZE_GROW;
+            };
+        controls
+            {
+            XmLabelGadget Midas_Custom_Command_Label;
+            XmText 
+                {
+                arguments
+                    {
+                    XmNx = 14;
+                    XmNy = 32;
+                    XmNwidth = 25;
+                    XmNtopAttachment = XmATTACH_WIDGET;
+                    XmNleftAttachment = XmATTACH_FORM;
+                    XmNleftOffset = 9;
+                    XmNtopOffset = 2;
+                    XmNrightOffset = 9;
+                    XmNrightAttachment = XmATTACH_FORM;
+                    XmNbottomOffset = 9;
+                    XmNbottomAttachment = XmATTACH_FORM;
+                    XmNtopWidget = XmLabelGadget Midas_Custom_Command_Label;
+                    XmNeditMode = XmMULTI_LINE_EDIT;
+                    XmNrows = 4;
+                    };
+                callbacks
+                    {
+                    MrmNcreateCallback = procedures
+                        {
+                        CustomCreate(1);
+                        };
+                    XmNvalueChangedCallback = procedures
+                        {
+                        CustomUpdateSensitivity();
+                        };
+                    };
+                };
+            };
+        };
+    Midas_Custom_Command_Label: XmLabelGadget 
+        {
+        arguments
+            {
+            arguments Midas_Custom_Label;
+            XmNlabelString = 
+            compound_string("Command(s) for Selected Verb");
+            XmNx = 8;
+            XmNtopAttachment = XmATTACH_FORM;
+            };
+        };
+    Midas_Custom_Add_Verb: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 14;
+            XmNy = 252;
+            XmNlabelString = 
+            compound_string("Add Verb");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_POSITION;
+            XmNwidth = Midas_Custom_Button_Width;
+            XmNleftOffset = Midas_Cusom_Button_Offset;
+            XmNleftPosition = 25;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 4;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomWidget = XmPushButtonGadget Midas_Custom_Separator;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                CustomCreate(4);
+                };
+            XmNactivateCallback = procedures
+                {
+                CustomVMAddVerb();
+                };
+            };
+        };
+    Midas_Custom_Separator: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 19;
+            XmNy = 279;
+            XmNlabelString = 
+            compound_string(".......");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_POSITION;
+            XmNleftPosition = 25;
+            XmNtopOffset = 0;
+            XmNleftOffset = Midas_Cusom_Button_Offset;
+            XmNwidth = Midas_Custom_Button_Width;
+            XmNbottomOffset = Buitton_Bottom_Offset;
+            XmNbottomAttachment = XmATTACH_FORM;
+            XmNheight = 28;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                CustomCreate(6);
+                };
+            XmNactivateCallback = procedures
+                {
+                CustomVMAddSeparator();
+                };
+            };
+        };
+    Midas_Custom_Up: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 11;
+            XmNy = 223;
+            XmNlabelString = 
+            compound_string("Up");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_POSITION;
+            XmNwidth = Midas_Custom_Button_Width;
+            XmNleftOffset = Midas_Cusom_Button_Offset;
+            XmNleftPosition = 25;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 5;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomWidget = XmPushButtonGadget Midas_Custom_Add_Verb;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                CustomCreate(2);
+                };
+            XmNactivateCallback = procedures
+                {
+                CustomVMUp();
+                };
+            };
+        };
+    Midas_Custom_Verb_Menu_Label: XmLabelGadget 
+        {
+        arguments
+            {
+            arguments Midas_Custom_Label;
+            XmNlabelString = 
+            compound_string("Verbs in Menu");
+            XmNtopAttachment = XmATTACH_FORM;
+            };
+        };
+    Verb_Label: XmLabelGadget 
+        {
+        arguments
+            {
+            arguments Midas_Custom_Label;
+            XmNlabelString = 
+            compound_string("Verbs");
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftAttachment = XmATTACH_FORM;
+            };
+        };
+    Verb_Enter_Button: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 13;
+            XmNy = 277;
+            XmNlabelString = 
+            compound_string("Enter");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_POSITION;
+            XmNleftOffset = Midas_Cusom_Button_Offset;
+            XmNtopOffset = 0;
+            XmNleftPosition = 25;
+            XmNwidth = Midas_Custom_Button_Width;
+            XmNbottomOffset = Buitton_Bottom_Offset;
+            XmNbottomAttachment = XmATTACH_FORM;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                CustomCreate(15);
+                };
+            XmNactivateCallback = procedures
+                {
+                CustomAddVerb();
+                };
+            };
+        };
+    Verb_Text: XmText 
+        {
+        arguments
+            {
+            XmNx = 18;
+            XmNy = 264;
+            XmNheight = 35;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = list_offset;
+            XmNtopOffset = 0;
+            XmNrightOffset = list_offset;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNbottomOffset = list_offset;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomWidget = XmPushButtonGadget Verb_Enter_Button;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                CustomCreate(14);
+                };
+            XmNvalueChangedCallback = procedures
+                {
+                CustomUpdateSensitivity();
+                };
+            };
+        };
+    Verb_Form: XmForm 
+        {
+        arguments
+            {
+            XmNx = 31;
+            XmNy = 61;
+            XmNwidth = 25;
+            XmNheight = 315;
+            XmNborderWidth = 1;
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNrightOffset = 0;
+            XmNrightAttachment = XmATTACH_POSITION;
+            XmNrightPosition = 30;
+            XmNbottomOffset = -1;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomWidget = XmForm Midas_Custom_Command;
+            XmNdefaultButton = XmPushButtonGadget Verb_Enter_Button;
+            };
+        controls
+            {
+            XmLabelGadget Verb_Label;
+            XmText Verb_Text;
+            XmPushButtonGadget Verb_Enter_Button;
+            XmToggleButtonGadget Verb_Is_Toggle;
+            XmPushButtonGadget 
+                {
+                arguments
+                    {
+                    XmNx = 81;
+                    XmNy = 279;
+                    XmNlabelString = 
+                    compound_string("Delete");
+                    XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+                    XmNleftAttachment = XmATTACH_POSITION;
+                    XmNleftOffset = Midas_Cusom_Button_Offset;
+                    XmNtopOffset = 0;
+                    XmNtopWidget = XmPushButtonGadget Verb_Enter_Button;
+                    XmNleftPosition = 75;
+                    XmNwidth = Midas_Custom_Button_Width;
+                    };
+                callbacks
+                    {
+                    MrmNcreateCallback = procedures
+                        {
+                        CustomCreate(16);
+                        };
+                    XmNactivateCallback = procedures
+                        {
+                        CustomDelVerb();
+                        };
+                    };
+                };
+            XmScrolledList 
+                {
+                arguments
+                    {
+                    XmNwidth = 69;
+                    XmNheight = 182;
+                    XmNy = 25;
+                    XmNx = 77;
+                    XmNtopOffset = 0;
+                    XmNtopAttachment = XmATTACH_WIDGET;
+                    XmNtopWidget = XmLabelGadget Verb_Label;
+                    XmNleftOffset = list_offset;
+                    XmNleftAttachment = XmATTACH_FORM;
+                    XmNrightOffset = list_offset;
+                    XmNrightAttachment = XmATTACH_FORM;
+                    XmNbottomOffset = 2;
+                    XmNbottomAttachment = XmATTACH_WIDGET;
+                    XmNlistSizePolicy = XmCONSTANT;
+                    XmNvisibleItemCount = 999;
+                    XmNbottomWidget = XmToggleButtonGadget Verb_Is_Toggle;
+                    };
+                callbacks
+                    {
+                    MrmNcreateCallback = procedures
+                        {
+                        CustomCreate(13);
+                        };
+                    XmNbrowseSelectionCallback = procedures
+                        {
+                        CustomSelVerb();
+                        };
+                    XmNdefaultActionCallback = procedures
+                        {
+                        CustomSelConfVerb();
+                        };
+                    };
+                };
+            };
+        };
+    Menu_Label: XmLabelGadget 
+        {
+        arguments
+            {
+            arguments Midas_Custom_Label;
+            XmNlabelString = 
+            compound_string("Menus");
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftAttachment = XmATTACH_FORM;
+            };
+        };
+    Menu_Text: XmText 
+        {
+        arguments
+            {
+            XmNx = 15;
+            XmNy = 264;
+            XmNheight = 35;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = list_offset;
+            XmNtopOffset = 0;
+            XmNrightOffset = list_offset;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNbottomOffset = list_offset;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomWidget = XmPushButtonGadget Menu_Ok_Button;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                CustomCreate(18);
+                };
+            XmNvalueChangedCallback = procedures
+                {
+                CustomUpdateSensitivity();
+                };
+            };
+        };
+    Menu_Ok_Button: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 9;
+            XmNy = 277;
+            XmNlabelString = 
+            compound_string("Enter");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_POSITION;
+            XmNleftOffset = Midas_Cusom_Button_Offset;
+            XmNtopOffset = 0;
+            XmNleftPosition = 25;
+            XmNwidth = Midas_Custom_Button_Width;
+            XmNbottomOffset = Buitton_Bottom_Offset;
+            XmNbottomAttachment = XmATTACH_FORM;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                CustomCreate(19);
+                };
+            XmNactivateCallback = procedures
+                {
+                CustomAddMenu();
+                };
+            };
+        };
+    ActiveMenuLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 10;
+            XmNy = 239;
+            XmNlabelString = 
+            compound_string("No Menu Selected");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 10;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 5;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomWidget = XmPushButtonGadget Midas_Custom_Up;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                CustomCreate(21);
+                };
+            };
+        };
+    MidasCustomExitDialog: XmWarningDialog 
+        {
+        arguments
+            {
+            XmNmessageString = 
+            compound_string("Customization changes have not been saved.",separate=true) &
+                compound_string("Save changes before exiting?");
+            XmNx = 34;
+            XmNy = 55;
+            XmNborderWidth = 1;
+            XmNcancelLabelString = 
+            compound_string("No");
+            XmNokLabelString = 
+            compound_string("Yes");
+            XmNhelpLabelString = 
+            compound_string("Cancel");
+            XmNdialogStyle = XmDIALOG_FULL_APPLICATION_MODAL;
+            XmNmessageAlignment = XmALIGNMENT_CENTER;
+            XmNdialogTitle = 
+            compound_string("Confirmation Needed...");
+            };
+        callbacks
+            {
+            XmNcancelCallback = procedures
+                {
+                CustomExit(0);
+                CustomExit(0);
+                };
+            XmNhelpCallback = procedures
+                {
+                CustomExit(2);
+                };
+            XmNokCallback = procedures
+                {
+                CustomExit(1);
+                };
+            };
+        };
+    FileList: XmFormDialog 
+        {
+        arguments
+            {
+            XmNx = 59;
+            XmNy = 211;
+            XmNwidth = 340;
+            XmNheight = 211;
+            XmNborderWidth = 1;
+            XmNdialogTitle = 
+            compound_string("Midas - File Manager");
+            XmNresizePolicy = XmRESIZE_NONE;
+            };
+        controls
+            {
+            XmMenuBar MidasFilesMenu;
+            XmScrolledList 
+                {
+                arguments
+                    {
+                    XmNx = 21;
+                    XmNy = 64;
+                    XmNwidth = 25;
+                    XmNheight = 25;
+                    XmNtopAttachment = XmATTACH_WIDGET;
+                    XmNleftAttachment = XmATTACH_FORM;
+                    XmNleftOffset = 0;
+                    XmNtopOffset = 0;
+                    XmNtopWidget = XmMenuBar MidasFilesMenu;
+                    XmNrightOffset = 0;
+                    XmNrightAttachment = XmATTACH_FORM;
+                    XmNbottomOffset = 0;
+                    XmNbottomAttachment = XmATTACH_FORM;
+                    };
+                callbacks
+                    {
+                    MrmNcreateCallback = procedures
+                        {
+                        SendMidas(
+                        "midas realize list MidasFiles .");
+                        };
+                    };
+                };
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                SendMidas(
+                "custom create FILELIST .");
+                };
+            };
+        };
+    MidasFilesMenu: XmMenuBar 
+        {
+        arguments
+            {
+            XmNrightOffset = 0;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNx = 10;
+            XmNwidth = 263;
+            XmNleftOffset = 0;
+            XmNleftAttachment = XmATTACH_FORM;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                SendMidas(
+                "custom connect FILELIST \"<main>\" .");
+                };
+            };
+        };
+    MidasFilesSelector: XmFileSelectionDialog 
+        {
+        arguments
+            {
+            XmNx = 0;
+            XmNy = 7;
+            XmNborderWidth = 1;
+            XmNdialogTitle = 
+            compound_string("Midas - Open File");
+            XmNpattern = 
+            compound_string("*.uid");
+            };
+        callbacks
+            {
+            XmNcancelCallback = procedures
+                {
+                SendMidas(
+                "Midas PopDown .");
+                };
+            MrmNcreateCallback = procedures
+                {
+                SendMidas(
+                "Midas PopDown ..Help");
+                };
+            };
+        };
+    MidasCallbackManager: XmFormDialog 
+        {
+        arguments
+            {
+            XmNwidth = 377;
+            XmNheight = 455;
+            XmNborderWidth = 1;
+            XmNdialogTitle = 
+            compound_string("Midas - Callback Manager");
+            XmNresizePolicy = XmRESIZE_NONE;
+            XmNautoUnmanage = false;
+            };
+        controls
+            {
+            XmLabelGadget MidasCallbackManagerLabel;
+            XmPanedWindow 
+                {
+                arguments
+                    {
+                    XmNx = 149;
+                    XmNy = 13;
+                    XmNwidth = 98;
+                    XmNheight = 151;
+                    XmNborderWidth = 1;
+                    XmNtopAttachment = XmATTACH_WIDGET;
+                    XmNleftAttachment = XmATTACH_FORM;
+                    XmNleftOffset = 4;
+                    XmNtopOffset = 54;
+                    XmNrightOffset = 6;
+                    XmNrightAttachment = XmATTACH_FORM;
+                    XmNtopWidget = XmLabelGadget MidasCallbackManagerLabel;
+                    XmNbottomOffset = 6;
+                    XmNbottomAttachment = XmATTACH_WIDGET;
+                    XmNbottomWidget = XmPushButtonGadget MidasCallbackManagerCancel;
+                    };
+                controls
+                    {
+                    XmScrolledList MidasCallbackManagerList;
+                    XmForm 
+                        {
+                        arguments
+                            {
+                            XmNx = 4;
+                            XmNy = 134;
+                            XmNwidth = 25;
+                            XmNheight = 122;
+                            XmNborderWidth = 1;
+                            };
+                        controls
+                            {
+                            XmLabelGadget MidasCallbackManagerLabel2;
+                            XmScrolledText MidasCallbackManagerText;
+                            };
+                        };
+                    };
+                };
+            XmPushButtonGadget MidasCallbackManagerCancel;
+            XmPushButtonGadget MidasCallbackManagerApply;
+            XmPushButtonGadget MidasCallbackManagerSave;
+            XmLabelGadget MidasCallbackManagerClassLabel;
+            XmText MidasCallbackManagerClassText;
+            XmText MidasCallbackManagerWidgetText;
+            };
+        };
+    MidasCallbackManagerLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 15;
+            XmNy = 12;
+            XmNlabelString = 
+            compound_string("Widget");
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 15;
+            XmNtopOffset = 18;
+            };
+        };
+    MidasCallbackManagerList: XmScrolledList 
+        {
+        arguments
+            {
+            XmNx = 18;
+            XmNy = 12;
+            XmNwidth = 25;
+            XmNheight = 80;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                SendMidas(
+                "Midas Realize List CallbackList .");
+                };
+            };
+        };
+    MidasCallbackManagerText: XmScrolledText 
+        {
+        arguments
+            {
+            XmNx = 186;
+            XmNy = 32;
+            XmNwidth = 125;
+            XmNheight = 83;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 1;
+            XmNtopOffset = 2;
+            XmNrightOffset = 4;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNbottomOffset = 2;
+            XmNbottomAttachment = XmATTACH_FORM;
+            XmNtopWidget = XmLabelGadget MidasCallbackManagerLabel2;
+            XmNeditMode = XmMULTI_LINE_EDIT;
+            };
+        };
+    MidasErrorBox: XmErrorDialog 
+        {
+        arguments
+            {
+            XmNmessageString = 
+            compound_string("Error Dialog Label");
+            XmNx = 43;
+            XmNy = 62;
+            XmNborderWidth = 1;
+            XmNwidth = 418;
+            XmNheight = 188;
+            XmNdialogStyle = XmDIALOG_FULL_APPLICATION_MODAL;
+            XmNdialogTitle = 
+            compound_string("Midas Error Message");
+            XmNokLabelString = 
+            compound_string("Acknowleged");
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                SendMidas(
+                "Midas PopDown ..Help\nMIdas PopDown ..Cancel");
+                };
+            };
+        };
+    MidasResourceManager: XmFormDialog 
+        {
+        arguments
+            {
+            XmNx = 66;
+            XmNy = 115;
+            XmNwidth = 368;
+            XmNheight = 288;
+            XmNborderWidth = 1;
+            XmNresizePolicy = XmRESIZE_NONE;
+            XmNautoUnmanage = false;
+            XmNdialogTitle = 
+            compound_string("Midas - Resource Manager");
+            XmNdefaultButton = XmPushButtonGadget Apply;
+            };
+        controls
+            {
+            XmLabelGadget Label;
+            XmLabelGadget Class;
+            XmText NameText;
+            XmText ClassText;
+            XmText Text;
+            XmLabelGadget ValueLabel;
+            XmPushButtonGadget Cancel;
+            XmPushButtonGadget Apply;
+            XmScrolledList List;
+            XmPushButtonGadget Save;
+            };
+        };
+    List: XmScrolledList 
+        {
+        arguments
+            {
+            XmNx = 20;
+            XmNy = 87;
+            XmNwidth = 324;
+            XmNheight = 87;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 20;
+            XmNtopOffset = 8;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomOffset = 0;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 20;
+            XmNbottomWidget = XmLabelGadget ValueLabel;
+            XmNtopWidget = XmText ClassText;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                SendMidas(
+                "Midas Realize List ResourceList .");
+                };
+            };
+        };
+    Label: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 18;
+            XmNy = 6;
+            XmNlabelString = 
+            compound_string("Widget");
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 7;
+            XmNtopOffset = 13;
+            };
+        };
+    ValueLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 18;
+            XmNy = 203;
+            XmNlabelString = 
+            compound_string("Resource Value");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 18;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 0;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomWidget = XmText Text;
+            };
+        };
+    Text: XmText 
+        {
+        arguments
+            {
+            XmNx = 20;
+            XmNy = 216;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 20;
+            XmNtopOffset = 0;
+            XmNrightOffset = 21;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNbottomOffset = 6;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomWidget = XmPushButtonGadget Apply;
+            };
+        };
+    Cancel: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 242;
+            XmNy = 261;
+            XmNlabelString = 
+            compound_string("Dismiss");
+            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNtopWidget = XmPushButtonGadget Apply;
+            XmNrightOffset = 41;
+            XmNrightAttachment = XmATTACH_FORM;
+            };
+        callbacks
+            {
+            XmNactivateCallback = procedures
+                {
+                SendMidas(
+                "Midas Popdown .^");
+                };
+            };
+        };
+    Apply: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 55;
+            XmNy = 260;
+            XmNlabelString = 
+            compound_string("Apply");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_POSITION;
+            XmNleftOffset = 92;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 2;
+            XmNbottomAttachment = XmATTACH_FORM;
+            XmNleftPosition = 16;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                SendMidas(
+                "Midas Center Horizontal . 50");
+                };
+            };
+        };
+    MidasIngotManager: XmFormDialog 
+        {
+        arguments
+            {
+            XmNx = 98;
+            XmNy = 143;
+            XmNwidth = 359;
+            XmNheight = 478;
+            XmNborderWidth = 1;
+            XmNresizePolicy = XmRESIZE_NONE;
+            XmNdialogTitle = 
+            compound_string("Midas - Ingot Manager");
+            };
+        controls
+            {
+            XmPanedWindow MidasIngotManagerPanes;
+            XmLabelGadget MidasIngotManagerLabel;
+            XmPushButtonGadget MidasIngotManagerDismiss;
+            XmLabelGadget MidasIngotManagerClassLabel;
+            XmText MidasIngotManagerNameText;
+            XmText MidasIngotManagerClassText;
+            XmPushButtonGadget MidasIngotManagerCreateNew;
+            };
+        };
+    MidasCallbackManagerLabel2: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 13;
+            XmNy = 8;
+            XmNlabelString = 
+            compound_string("Callback Command");
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 13;
+            XmNtopOffset = 8;
+            };
+        };
+    MidasCallbackManagerCancel: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 42;
+            XmNy = 361;
+            XmNlabelString = 
+            compound_string("Dismiss");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 185;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 2;
+            XmNbottomAttachment = XmATTACH_FORM;
+            XmNrightOffset = 0;
+            XmNrightAttachment = XmATTACH_NONE;
+            XmNwidth = 73;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                SendMidas(
+                "Midas Center Horizontal . 75");
+                };
+            };
+        };
+    MidasCallbackManagerApply: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 168;
+            XmNy = 360;
+            XmNlabelString = 
+            compound_string("Apply");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 27;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 2;
+            XmNbottomAttachment = XmATTACH_FORM;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                SendMidas(
+                "Midas Center Horizontal . 50");
+                };
+            };
+        };
+    MidasCallbackManagerSave: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 103;
+            XmNy = 358;
+            XmNlabelString = 
+            compound_string("Save");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 102;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 2;
+            XmNbottomAttachment = XmATTACH_FORM;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                SendMidas(
+                "Midas Center Horizontal . 25");
+                };
+            };
+        };
+    MidasExitDialog: XmWarningDialog 
+        {
+        arguments
+            {
+            XmNmessageString = 
+            compound_string("Saved resources have not been stored.",separate=true) &
+                compound_string("Store before exiting?");
+            XmNx = 36;
+            XmNy = 220;
+            XmNborderWidth = 1;
+            XmNcancelLabelString = 
+            compound_string("No");
+            XmNokLabelString = 
+            compound_string("Yes");
+            XmNhelpLabelString = 
+            compound_string("Cancel");
+            XmNdialogStyle = XmDIALOG_FULL_APPLICATION_MODAL;
+            XmNmessageAlignment = XmALIGNMENT_CENTER;
+            XmNdialogTitle = 
+            compound_string("Confirmation Needed...");
+            };
+        callbacks
+            {
+            XmNcancelCallback = procedures
+                {
+                midas_exit(0);
+                };
+            XmNhelpCallback = procedures
+                {
+                midas_exit(2);
+                };
+            XmNokCallback = procedures
+                {
+                midas_exit(1);
+                };
+            };
+        };
+    MidasIngotManagerPanes: XmPanedWindow 
+        {
+        arguments
+            {
+            XmNx = 46;
+            XmNy = 78;
+            XmNwidth = 25;
+            XmNheight = 25;
+            XmNborderWidth = 1;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 6;
+            XmNtopOffset = 8;
+            XmNrightOffset = 6;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNbottomOffset = 3;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomWidget = XmPushButtonGadget MidasIngotManagerDismiss;
+            XmNtopWidget = XmText MidasIngotManagerClassText;
+            };
+        controls
+            {
+            XmScrolledList MidasIngotManagerList;
+            XmForm 
+                {
+                arguments
+                    {
+                    XmNx = 13;
+                    XmNy = 21;
+                    XmNwidth = 25;
+                    XmNheight = 33;
+                    XmNborderWidth = 1;
+                    };
+                controls
+                    {
+                    XmLabelGadget MidasIngotManagerValueLabel;
+                    XmText MidasIngotManagerValueText;
+                    XmPushButtonGadget MidasIngotManagerValueApply;
+                    XmText MidasIngotManagerCallbackText;
+                    XmLabelGadget MidasIngotManagerCallbackLabel;
+                    XmPushButtonGadget MidasIngotManagerCallbackApply;
+                    XmPushButtonGadget MidasIngotManagerCallbackSave;
+                    XmText MidasIngotValueOwnerText;
+                    XmLabelGadget MidasIngotValueOwnerLabel;
+                    XmToggleButtonGadget MidasIngotManagerCallbackOption;
+                    };
+                };
+            };
+        };
+    MidasIngotManagerList: XmScrolledList 
+        {
+        arguments
+            {
+            XmNx = 37;
+            XmNy = 9;
+            XmNwidth = 16;
+            XmNheight = 74;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                SendMidas(
+                "Midas Realize List IngotList .");
+                };
+            };
+        };
+    MidasIngotManagerDismiss: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 11;
+            XmNy = 199;
+            XmNlabelString = 
+            compound_string("Dismiss");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 11;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 6;
+            XmNbottomAttachment = XmATTACH_FORM;
+            };
+        };
+    MidasIngotManagerLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 8;
+            XmNy = 10;
+            XmNlabelString = 
+            compound_string("Widget");
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 8;
+            XmNtopOffset = 10;
+            };
+        };
+    MidasIngotManagerValueLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 10;
+            XmNy = 5;
+            XmNlabelString = 
+            compound_string("Value");
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 10;
+            XmNtopOffset = 6;
+            };
+        };
+    MidasIngotManagerValueApply: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 198;
+            XmNy = 5;
+            XmNlabelString = 
+            compound_string("Apply");
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = 4;
+            XmNrightOffset = 3;
+            XmNrightAttachment = XmATTACH_FORM;
+            };
+        };
+    MidasIngotManagerValueText: XmText 
+        {
+        arguments
+            {
+            XmNx = 69;
+            XmNy = 6;
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = 6;
+            XmNtopOffset = 2;
+            XmNleftWidget = XmLabelGadget MidasIngotManagerValueLabel;
+            XmNrightOffset = 4;
+            XmNrightAttachment = XmATTACH_WIDGET;
+            XmNrightWidget = XmPushButtonGadget MidasIngotManagerValueApply;
+            };
+        };
+    MidasIngotManagerCallbackApply: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 14;
+            XmNy = 150;
+            XmNlabelString = 
+            compound_string("Apply");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 14;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 2;
+            XmNbottomAttachment = XmATTACH_FORM;
+            };
+        };
+    MidasIngotManagerCallbackSave: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 255;
+            XmNy = 145;
+            XmNlabelString = 
+            compound_string("Save");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 2;
+            XmNbottomAttachment = XmATTACH_FORM;
+            XmNrightOffset = 19;
+            XmNrightAttachment = XmATTACH_FORM;
+            };
+        };
+    MidasIngotManagerCallbackLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 11;
+            XmNy = 83;
+            XmNlabelString = 
+            compound_string("Callback");
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 7;
+            XmNtopOffset = 7;
+            XmNtopWidget = XmText MidasIngotValueOwnerText;
+            };
+        };
+    MidasIngotManagerCallbackText: XmText 
+        {
+        arguments
+            {
+            XmNx = 6;
+            XmNy = 60;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 3;
+            XmNtopOffset = 1;
+            XmNrightOffset = 9;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNbottomOffset = 0;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomWidget = XmToggleButtonGadget MidasIngotManagerCallbackOption;
+            XmNtopWidget = XmLabelGadget MidasIngotManagerCallbackLabel;
+            XmNeditMode = XmMULTI_LINE_EDIT;
+            };
+        };
+    Save: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 151;
+            XmNy = 247;
+            XmNlabelString = 
+            compound_string("Save");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 55;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 2;
+            XmNbottomAttachment = XmATTACH_FORM;
+            };
+        };
+    WidgetList: XmMainWindow 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            XmNmessageWindow = XmRowColumn WidgetListButtons;
+            XmNscrollingPolicy = XmAUTOMATIC;
+            };
+        controls
+            {
+            XmMenuBar WidgetListMenu;
+            XmRowColumn WidgetListButtons;
+            };
+        };
+    WidgetListMenu: XmMenuBar 
+        {
+        };
+    WidgetListButtons: XmRowColumn 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            XmNwidth = 214;
+            XmNheight = 113;
+            XmNy = 97;
+            XmNorientation = XmHORIZONTAL;
+            XmNresizeWidth = false;
+            };
+        };
+    MidasExpressionEvaluator: XmFormDialog 
+        {
+        arguments
+            {
+            XmNx = 19;
+            XmNy = 116;
+            XmNborderWidth = 1;
+            XmNresizePolicy = XmRESIZE_ANY;
+            XmNdialogTitle = 
+            compound_string("Midas: Expression Evaluator");
+            XmNautoUnmanage = false;
+            XmNdefaultButton = XmPushButtonGadget MidasEvalEvaluateButton;
+            XmNmarginHeight = 10;
+            };
+        controls
+            {
+            XmLabelGadget MidasEvalExpressionLabel;
+            XmText MidasEvalExpressionText;
+            XmLabelGadget MidasEvalResultLabel;
+            XmText MidasEvalResultText;
+            XmPushButtonGadget MidasEvalDismissButton;
+            XmPushButtonGadget MidasEvalEvaluateButton;
+            XmPushButtonGadget MidasEvalClearButton;
+            XmLabelGadget MidasEvalTypeLabel;
+            XmText MidasEvalTypeText;
+            };
+        };
+    MidasEvalExpressionLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 13;
+            XmNy = 28;
+            XmNlabelString = 
+            compound_string("Expression");
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 13;
+            XmNtopOffset = 8;
+            };
+        };
+    MidasEvalExpressionText: XmText 
+        {
+        arguments
+            {
+            XmNx = 18;
+            XmNy = 46;
+            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 14;
+            XmNtopOffset = 3;
+            XmNrightOffset = 8;
+            XmNrightAttachment = XmATTACH_WIDGET;
+            XmNtopWidget = XmPushButtonGadget MidasEvalEvaluateButton;
+            XmNrightWidget = XmPushButtonGadget MidasEvalEvaluateButton;
+            XmNrows = 1;
+            };
+        };
+    MidasEvalResultText: XmText 
+        {
+        arguments
+            {
+            XmNx = 19;
+            XmNy = 113;
+            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = 14;
+            XmNtopOffset = -4;
+            XmNrightOffset = 16;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNleftWidget = XmLabelGadget MidasEvalResultLabel;
+            XmNtopWidget = XmLabelGadget MidasEvalResultLabel;
+            XmNrows = 1;
+            XmNeditable = false;
+            };
+        };
+    MidasEvalResultLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 17;
+            XmNy = 80;
+            XmNlabelString = 
+            compound_string("Result");
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 17;
+            XmNtopOffset = 15;
+            XmNtopWidget = XmText MidasEvalExpressionText;
+            };
+        };
+    MidasEvalDismissButton: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 22;
+            XmNy = 174;
+            XmNlabelString = 
+            compound_string("Dismiss");
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 22;
+            XmNtopOffset = 5;
+            XmNtopWidget = XmLabelGadget MidasEvalTypeLabel;
+            };
+        };
+    MidasEvalEvaluateButton: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 271;
+            XmNy = 39;
+            XmNlabelString = 
+            compound_string("Evaluate");
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = -1;
+            XmNrightOffset = 11;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNtopWidget = XmLabelGadget MidasEvalExpressionLabel;
+            };
+        };
+    MidasEvalClearButton: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 291;
+            XmNy = 137;
+            XmNlabelString = 
+            compound_string("Clear");
+            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNtopWidget = XmPushButtonGadget MidasEvalDismissButton;
+            XmNrightOffset = 11;
+            XmNrightAttachment = XmATTACH_FORM;
+            };
+        };
+    MidasStartup: XmFormDialog 
+        {
+        arguments
+            {
+            XmNx = 48;
+            XmNy = 97;
+            XmNwidth = 425;
+            XmNheight = 225;
+            XmNborderWidth = 1;
+            XmNdialogTitle = 
+            compound_string("Midas Startup");
+            XmNautoUnmanage = false;
+            XmNresizePolicy = XmRESIZE_GROW;
+            };
+        controls
+            {
+            XmLabelGadget MidasStartupLabel;
+            XmText MidasStartupText;
+            XmPushButtonGadget MidasStartupSave;
+            XmPushButtonGadget MidasStartupDismiss;
+            };
+        };
+    MidasStartupLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 9;
+            XmNy = 19;
+            XmNlabelString = 
+            compound_string("Commands to be executed at startup");
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 15;
+            XmNtopOffset = 9;
+            };
+        };
+    MidasStartupSave: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 19;
+            XmNy = 189;
+            XmNlabelString = 
+            compound_string("Save");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 19;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 7;
+            XmNbottomAttachment = XmATTACH_FORM;
+            };
+        };
+    MidasStartupDismiss: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 235;
+            XmNy = 192;
+            XmNlabelString = 
+            compound_string("Dismiss");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNrightOffset = 14;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNbottomOffset = -1;
+            XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNbottomWidget = XmPushButtonGadget MidasStartupSave;
+            };
+        };
+    MidasStartupText: XmText 
+        {
+        arguments
+            {
+            XmNx = 13;
+            XmNy = 33;
+            XmNwidth = 269;
+            XmNheight = 142;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 13;
+            XmNtopOffset = 3;
+            XmNrightOffset = 15;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNtopWidget = XmLabelGadget MidasStartupLabel;
+            XmNbottomOffset = 5;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomWidget = XmPushButtonGadget MidasStartupSave;
+            XmNeditMode = XmMULTI_LINE_EDIT;
+            };
+        };
+    MidasInfo: XmFormDialog 
+        {
+        arguments
+            {
+            XmNx = 150;
+            XmNy = 96;
+            XmNborderWidth = 1;
+            XmNresizePolicy = XmRESIZE_ANY;
+            XmNwidth = 336;
+            };
+        controls
+            {
+            XmLabelGadget MidasInfoLabel;
+            XmText MidasInfoClassText;
+            XmLabelGadget MidasInfoNameLabel;
+            XmLabelGadget MidasInfoClassLabel;
+            XmText MidasInfoNameText;
+            XmRowColumn MidasInfoButtonBox;
+            XmArrowButtonGadget MidasInfoUpButton;
+            };
+        };
+    MidasInfoLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 13;
+            XmNy = 17;
+            XmNlabelString = 
+            compound_string("Selected Widget");
+            XmNtopAttachment = XmATTACH_FORM;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 13;
+            XmNtopOffset = 6;
+            XmNalignment = XmALIGNMENT_CENTER;
+            XmNrightOffset = 9;
+            XmNrightAttachment = XmATTACH_FORM;
+            };
+        };
+    MidasInfoNameLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 15;
+            XmNy = 45;
+            XmNlabelString = 
+            compound_string("Name:");
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 15;
+            XmNtopOffset = 6;
+            XmNheight = 27;
+            XmNtopWidget = XmLabelGadget MidasInfoLabel;
+            };
+        };
+    MidasInfoClassLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 16;
+            XmNy = 98;
+            XmNlabelString = 
+            compound_string("Class:");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 16;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 5;
+            XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNbottomWidget = XmText MidasInfoClassText;
+            XmNheight = 31;
+            };
+        };
+    MidasInfoNameText: XmText 
+        {
+        arguments
+            {
+            XmNx = 65;
+            XmNy = 26;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = 7;
+            XmNtopOffset = 0;
+            XmNleftWidget = XmLabelGadget MidasInfoNameLabel;
+            XmNrightOffset = 2;
+            XmNrightAttachment = XmATTACH_WIDGET;
+            XmNeditable = false;
+            XmNbottomOffset = LabelTextOffset;
+            XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNbottomWidget = XmLabelGadget MidasInfoNameLabel;
+            XmNrightWidget = XmArrowButtonGadget MidasInfoUpButton;
+            };
+        };
+    MidasInfoClassText: XmText 
+        {
+        arguments
+            {
+            XmNx = 65;
+            XmNy = 93;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftOffset = -1;
+            XmNtopOffset = 8;
+            XmNrightOffset = 0;
+            XmNrightAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNeditable = false;
+            XmNtopWidget = XmText MidasInfoNameText;
+            XmNleftWidget = XmText MidasInfoNameText;
+            XmNrightWidget = XmText MidasInfoNameText;
+            };
+        };
+    MidasInfoButtonBox: XmRowColumn 
+        {
+        arguments
+            {
+            XmNx = 7;
+            XmNy = 159;
+            XmNborderWidth = 1;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 0;
+            XmNtopOffset = 9;
+            XmNrightOffset = 0;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNtopWidget = XmText MidasInfoClassText;
+            };
+        };
+    MidasCallbackManagerClassLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 14;
+            XmNy = 41;
+            XmNlabelString = 
+            compound_string("Class");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 6;
+            XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNbottomWidget = XmText MidasCallbackManagerClassText;
+            XmNrightOffset = 4;
+            XmNrightAttachment = XmATTACH_WIDGET;
+            XmNrightWidget = XmText MidasCallbackManagerClassText;
+            };
+        };
+    MidasCallbackManagerWidgetText: XmText 
+        {
+        arguments
+            {
+            XmNx = 73;
+            XmNy = 9;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = 2;
+            XmNtopOffset = 0;
+            XmNleftWidget = XmLabelGadget MidasCallbackManagerLabel;
+            XmNrightOffset = 5;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNeditable = false;
+            XmNbottomOffset = -6;
+            XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNbottomWidget = XmLabelGadget MidasCallbackManagerLabel;
+            };
+        };
+    MidasCallbackManagerClassText: XmText 
+        {
+        arguments
+            {
+            XmNx = 66;
+            XmNy = 9;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftOffset = 0;
+            XmNtopOffset = 7;
+            XmNrightOffset = 5;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNeditable = false;
+            XmNtopWidget = XmText MidasCallbackManagerWidgetText;
+            XmNleftWidget = XmText MidasCallbackManagerWidgetText;
+            };
+        };
+    Class: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 15;
+            XmNy = 38;
+            XmNlabelString = 
+            compound_string("Class");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNrightOffset = 4;
+            XmNrightAttachment = XmATTACH_WIDGET;
+            XmNrightWidget = XmText ClassText;
+            XmNbottomOffset = 7;
+            XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNbottomWidget = XmText ClassText;
+            };
+        };
+    NameText: XmText 
+        {
+        arguments
+            {
+            XmNx = 85;
+            XmNy = 5;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = 5;
+            XmNtopOffset = 0;
+            XmNeditable = false;
+            XmNleftWidget = XmLabelGadget Label;
+            XmNbottomOffset = -7;
+            XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNbottomWidget = XmLabelGadget Label;
+            XmNrightOffset = 9;
+            XmNrightAttachment = XmATTACH_FORM;
+            };
+        };
+    ClassText: XmText 
+        {
+        arguments
+            {
+            XmNx = 86;
+            XmNy = 49;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftOffset = -1;
+            XmNtopOffset = 5;
+            XmNeditable = false;
+            XmNtopWidget = XmText NameText;
+            XmNleftWidget = XmText NameText;
+            XmNrightOffset = 9;
+            XmNrightAttachment = XmATTACH_FORM;
+            };
+        };
+    MidasIngotManagerClassLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 10;
+            XmNy = 41;
+            XmNlabelString = 
+            compound_string("Class");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNrightOffset = 8;
+            XmNrightAttachment = XmATTACH_WIDGET;
+            XmNrightWidget = XmText MidasIngotManagerClassText;
+            XmNbottomOffset = 6;
+            XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNbottomWidget = XmText MidasIngotManagerClassText;
+            };
+        };
+    MidasIngotManagerClassText: XmText 
+        {
+        arguments
+            {
+            XmNx = 68;
+            XmNy = 55;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 66;
+            XmNtopOffset = 3;
+            XmNrightOffset = 7;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNeditable = false;
+            XmNtopWidget = XmText MidasIngotManagerNameText;
+            };
+        };
+    MidasIngotManagerNameText: XmText 
+        {
+        arguments
+            {
+            XmNx = 66;
+            XmNy = 11;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = 9;
+            XmNtopOffset = 0;
+            XmNrightOffset = 7;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNeditable = false;
+            XmNbottomOffset = -8;
+            XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNbottomWidget = XmLabelGadget MidasIngotManagerLabel;
+            XmNleftWidget = XmLabelGadget MidasIngotManagerLabel;
+            };
+        };
+    MidasIngotValueOwnerText: XmText 
+        {
+        arguments
+            {
+            XmNx = 89;
+            XmNy = 51;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftOffset = 0;
+            XmNtopOffset = 4;
+            XmNleftWidget = XmText MidasIngotManagerValueText;
+            XmNrightOffset = 0;
+            XmNrightAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNrightWidget = XmText MidasIngotManagerValueText;
+            XmNtopWidget = XmText MidasIngotManagerValueText;
+            XmNeditable = false;
+            };
+        };
+    MidasIngotValueOwnerLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 5;
+            XmNy = 45;
+            XmNlabelString = 
+            compound_string("Owner");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNheight = 22;
+            XmNbottomOffset = 6;
+            XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNbottomWidget = XmText MidasIngotValueOwnerText;
+            XmNrightOffset = 5;
+            XmNrightAttachment = XmATTACH_WIDGET;
+            XmNrightWidget = XmText MidasIngotValueOwnerText;
+            };
+        };
+    MidasIngotManagerCreateNew: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 257;
+            XmNy = 366;
+            XmNlabelString = 
+            compound_string("Create New Ingot...");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 6;
+            XmNbottomAttachment = XmATTACH_FORM;
+            XmNrightOffset = 9;
+            XmNrightAttachment = XmATTACH_FORM;
+            };
+        };
+    MidasCreateNewIngot: XmFormDialog 
+        {
+        arguments
+            {
+            XmNx = 99;
+            XmNy = 665;
+            XmNwidth = 338;
+            XmNheight = 139;
+            XmNborderWidth = 1;
+            XmNautoUnmanage = false;
+            XmNdefaultButton = XmPushButtonGadget MidasCreateIngotOk;
+            };
+        controls
+            {
+            XmLabelGadget MidasCreateIngotNameLabel;
+            XmLabelGadget MidasCreateIngotOwnerLabel;
+            XmText MidasCreateIngotOwnerText;
+            XmArrowButtonGadget MidasCreateIngotUp;
+            XmText MidasCreateIngotNameText;
+            XmPushButtonGadget MidasCreateIngotOk;
+            XmPushButtonGadget MidasCreateIngotCancel;
+            };
+        };
+    MidasCreateIngotNameLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 13;
+            XmNy = 18;
+            XmNlabelString = 
+            compound_string("Name");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNrightOffset = 5;
+            XmNrightAttachment = XmATTACH_WIDGET;
+            XmNrightWidget = XmText MidasCreateIngotNameText;
+            XmNbottomOffset = 9;
+            XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNbottomWidget = XmText MidasCreateIngotNameText;
+            };
+        };
+    MidasCreateIngotOwnerLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 17;
+            XmNy = 154;
+            XmNlabelString = 
+            compound_string("Owner");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 6;
+            XmNtopOffset = 0;
+            XmNrightOffset = 0;
+            XmNrightAttachment = XmATTACH_NONE;
+            XmNbottomOffset = 9;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNheight = 28;
+            XmNbottomWidget = XmPushButtonGadget MidasCreateIngotOk;
+            };
+        };
+    MidasCreateIngotUp: XmArrowButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 299;
+            XmNy = 76;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNrightOffset = 10;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNbottomOffset = -1;
+            XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNbottomWidget = XmLabelGadget MidasCreateIngotOwnerLabel;
+            };
+        };
+    MidasCreateIngotNameText: XmText 
+        {
+        arguments
+            {
+            XmNx = 102;
+            XmNy = 11;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftOffset = -1;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 7;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomWidget = XmText MidasCreateIngotOwnerText;
+            XmNleftWidget = XmText MidasCreateIngotOwnerText;
+            XmNwidth = 176;
+            XmNrightOffset = 0;
+            XmNrightAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNrightWidget = XmText MidasCreateIngotOwnerText;
+            };
+        };
+    MidasCreateIngotOwnerText: XmText 
+        {
+        arguments
+            {
+            XmNx = 76;
+            XmNy = 100;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_WIDGET;
+            XmNleftOffset = 6;
+            XmNtopOffset = 0;
+            XmNbottomOffset = -5;
+            XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNrightOffset = 6;
+            XmNrightAttachment = XmATTACH_WIDGET;
+            XmNrightWidget = XmArrowButtonGadget MidasCreateIngotUp;
+            XmNbottomWidget = XmLabelGadget MidasCreateIngotOwnerLabel;
+            XmNleftWidget = XmLabelGadget MidasCreateIngotOwnerLabel;
+            };
+        };
+    MidasCreateIngotOk: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 7;
+            XmNy = 91;
+            XmNlabelString = 
+            compound_string("Ok");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 29;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 3;
+            XmNbottomAttachment = XmATTACH_FORM;
+            };
+        };
+    MidasCreateIngotCancel: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 220;
+            XmNy = 94;
+            XmNlabelString = 
+            compound_string("Cancel");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 0;
+            XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNbottomWidget = XmPushButtonGadget MidasCreateIngotOk;
+            XmNrightOffset = 8;
+            XmNrightAttachment = XmATTACH_FORM;
+            };
+        };
+    MidasEvalTypeText: XmText 
+        {
+        arguments
+            {
+            XmNx = 155;
+            XmNy = 83;
+            XmNtopAttachment = XmATTACH_WIDGET;
+            XmNleftAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftOffset = 0;
+            XmNtopOffset = 4;
+            XmNrightOffset = 16;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNleftWidget = XmText MidasEvalResultText;
+            XmNrows = 1;
+            XmNeditable = false;
+            XmNtopWidget = XmText MidasEvalResultText;
+            };
+        };
+    MidasEvalTypeLabel: XmLabelGadget 
+        {
+        arguments
+            {
+            XmNx = 17;
+            XmNy = 132;
+            XmNlabelString = 
+            compound_string("Result",separate=true) &
+                compound_string("Type");
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 17;
+            XmNtopOffset = 0;
+            XmNbottomOffset = 0;
+            XmNbottomAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNbottomWidget = XmText MidasEvalTypeText;
+            };
+        };
+    MidasInfoUpButton: XmArrowButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 301;
+            XmNy = 33;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = 0;
+            XmNwidth = 34;
+            XmNrightOffset = 1;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNheight = 29;
+            XmNbottomOffset = -28;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomWidget = XmLabelGadget MidasInfoNameLabel;
+            };
+        };
+    MidasIngotManagerCallbackOption: XmToggleButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Invoke Callback When Parent Created");
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftOffset = 14;
+            XmNtopOffset = 2;
+            XmNy = 176;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomWidget = XmPushButtonGadget MidasIngotManagerCallbackApply;
+            XmNbottomOffset = 1;
+            };
+        };
+    MidasHelp: XmMainWindow 
+        {
+        arguments
+            {
+            XmNx = 150;
+            XmNy = 104;
+            XmNborderWidth = 1;
+            XmNwidth = 454;
+            XmNheight = 418;
+            XmNmessageWindow = XmForm MidasHelpBulletinBoard;
+            XmNscrollingPolicy = XmAUTOMATIC;
+            };
+        controls
+            {
+            XmForm MidasHelpBulletinBoard;
+            unmanaged XmPromptDialog MidasHelpSearchDialog;
+            };
+        };
+    MidasHelpBulletinBoard: XmForm 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            XmNresizePolicy = XmRESIZE_GROW;
+            XmNmarginHeight = 10;
+            };
+        controls
+            {
+            XmPushButtonGadget MidasHelpGoBack;
+            XmPushButtonGadget MidasHelpSearch;
+            XmPushButtonGadget MidasHelpDismiss;
+            };
+        };
+    MidasHelpGoBack: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNx = 11;
+            XmNy = 2;
+            XmNlabelString = 
+            compound_string("Go Back");
+            XmNleftAttachment = XmATTACH_FORM;
+            XmNleftOffset = 11;
+            XmNbottomAttachment = XmATTACH_FORM;
+            XmNbottomOffset = 0;
+            };
+        };
+    MidasHelpDismiss: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Dismiss");
+            XmNleftAttachment = XmATTACH_NONE;
+            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftOffset = 367;
+            XmNtopOffset = 0;
+            XmNx = 367;
+            XmNrightAttachment = XmATTACH_FORM;
+            XmNrightOffset = 12;
+            XmNtopWidget = XmPushButtonGadget MidasHelpGoBack;
+            };
+        };
+    MidasHelpSearch: XmPushButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Search...");
+            XmNleftAttachment = XmATTACH_WIDGET;
+            XmNtopAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNleftOffset = 19;
+            XmNtopOffset = 0;
+            XmNtopWidget = XmPushButtonGadget MidasHelpGoBack;
+            XmNleftWidget = XmPushButtonGadget MidasHelpGoBack;
+            };
+        };
+    MidasHelpSearchDialog: XmPromptDialog 
+        {
+        arguments
+            {
+            XmNborderWidth = 1;
+            };
+        };
+    Verb_Is_Toggle: XmToggleButtonGadget 
+        {
+        arguments
+            {
+            XmNlabelString = 
+            compound_string("Is Toggle Button");
+            XmNleftAttachment = XmATTACH_OPPOSITE_WIDGET;
+            XmNtopAttachment = XmATTACH_NONE;
+            XmNleftOffset = 0;
+            XmNtopOffset = 246;
+            XmNy = 246;
+            XmNleftWidget = XmText Verb_Text;
+            XmNbottomAttachment = XmATTACH_WIDGET;
+            XmNbottomWidget = XmText Verb_Text;
+            XmNbottomOffset = 1;
+            };
+        callbacks
+            {
+            MrmNcreateCallback = procedures
+                {
+                CustomCreate(22);
+                };
+            };
+        };
+
+end module;
+
